@@ -46,117 +46,44 @@
     <div class="panel-body" id="main-board"></div>
 
     <div class="panel-footer">
-      <div class="col-md-4" id="player-1-score-div">
-        <h4><span id="player-1-name">Red</span>: <span id="player-1-score">$0</span></h4>
-      </div>
-
-      <div class="col-md-4" id="player-2-score-div">
-        <h4><span id="player-2-name">Blue</span>: <span id="player-2-score">$0</span></h4>
-      </div>
-
-      <div class="col-md-4" id="player-3-score-div">
-        <h4><span id="player-3-name">Green</span>: <span id="player-3-score">$0</span></h4>
-      </div>
-
-      <div class="clearfix"></div>
-    </div>
-
-    <div class="panel-footer">
-	    <div class="col-md-4">
-        	<button type="button" class="btn btn-info" id="score-adjust">Adjust Scores</button>
-	    </div>
-	    <div class="col-md-4 text-center">
-        	<h4 id="control-info">Control: <span id="control-player"></span></h4>
-	    </div>
-	    <div class="col-md-4">
-	        <button type="button" class="btn btn-info pull-right" id="next-round">Go to next round</button>
-			<button type="button" class="btn btn-info pull-right" id="end-round">End Round</button>
+	    <div class="text-center">
+        <button type="button" class="pull-right" id="next-round">Go to next round</button>
+        <button type="button" class="pull-right" id="end-round">End Round</button>
 	    </div>
       <div class="clearfix"></div>
     </div>
 
   </div>
 
-  <div class="modal fade" id="question-modal" role="dialog" aria-labelledby="question-modal" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+  <div class="modal fade-scale" id="question-modal" role="dialog" aria-labelledby="question-modal" aria-hidden="true" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog" id="question-modal-dialog">
       <div class="modal-content" id="question-modal-content">
-        <div class="modal-header">
-          <!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button> -->
-
+        <!-- title -->
+        <div class="modal-header no-border">
           <h4 class="modal-title text-center category-text" id="modal-answer-title">Modal title</h4>
         </div>
-
+        
         <div class="modal-body" id="question-modal-body">
+          <div id="question-media" class="text-center"></div>
           <p id="question" class="question-text text-center"></p>
-
-          <div id="question-image" class="text-center"></div>
+          <div id="answer-text" class="text-center"></div>
         </div>
 
-        <div id="answer" class="text-center modal-footer">
-          <div id="answer-text" class="text-center"></div>
 
-          <div id="answer-buttons" class="text-center">
-            <button type="button" class="btn btn-primary" id="answer-show-button">Show</button> <button type="button" class="btn btn-primary" id="answer-close-button">Close</button>
-          </div>
-        </div><!-- /.answer -->
-
-        <div id="scoring-buttons" class="text-center modal-footer">
-          <div class="score-button-group">
-            <div class="col-md-4">
-              <button type="button" class="btn btn-danger score-button" id="p1-wrong-button">
-                <span class="glyphicon glyphicon-remove"></span>P1
-              </button> 
-              <button type="button" class="btn btn-success score-button" id="p1-right-button">
-                <span class="glyphicon glyphicon-ok"></span>P1
-              </button>
-            </div>
-          </div>
-
-          <div class="score-button-group">
-            <div class="col-md-4">
-              <button type="button" class="btn btn-danger score-button" id="p2-wrong-button">
-                <span class="glyphicon glyphicon-remove"></span>P2
-              </button>
-              <button type="button" class="btn btn-success score-button" id="p2-right-button">
-                <span class="glyphicon glyphicon-ok"></span>P2
-              </button>
-            </div>
-          </div>
-
-          <div class="score-button-group">
-            <div class="col-md-4">
-              <button type="button" class="btn btn-danger score-button" id="p3-wrong-button">
-                <span class="glyphicon glyphicon-remove"></span>P3
-              </button>
-              <button type="button" class="btn btn-success score-button" id="p3-right-button">
-                <span class="glyphicon glyphicon-ok"></span>P3
-              </button>
-            </div>
-          </div>
-        </div><!-- /.scoring-buttons -->
-
-        <div id="question-timer" class="text-center modal-footer">
-          <div id="timer-grid" class="text-center">
-            <div class="timer-square timer-set-1"></div>
-            <div class="timer-square timer-set-2"></div>
-            <div class="timer-square timer-set-3"></div>
-            <div class="timer-square timer-set-4"></div>
-            <div class="timer-square timer-set-5"></div>
-            <div class="timer-square timer-set-4"></div>
-            <div class="timer-square timer-set-3"></div>
-            <div class="timer-square timer-set-2"></div>
-            <div class="timer-square timer-set-1"></div>
-          </div>
-        </div><!-- /.timer -->
+        <!-- buttons -->
+        <div id="answer-buttons" class="text-center">
+          <button type="button"   id="answer-show-button">Show Answer</button> 
+          <button type="button"   id="answer-close-button">Close</button>
+        </div>
 
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->
 
-  <div class="modal fade" id="score-adjust-modal" role="dialog" aria-labelledby="score-adjust-modal" aria-hidden="true">
+  <div class="modal fade-scale" id="score-adjust-modal" role="dialog" aria-labelledby="score-adjust-modal" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header">
+        <div class="modal-header no-border">
           <h4 class="modal-title text-center">Adjust Names</h4>
         </div>
 
@@ -176,7 +103,7 @@
           <div class="clearfix"></div>
         </div>
 
-        <div class="modal-header">
+        <div class="modal-header no-border">
           <h4 class="modal-title text-center">Adjust Scores</h4>
         </div>
 
@@ -197,30 +124,30 @@
         </div>
 
 
-        <div class="modal-header">
+        <div class="modal-header no-border">
           <h4 class="modal-title text-center">Adjust Control</h4>
         </div>
         <div id="adjust-control-input-div" class="modal-body text-center">
           <div class="control-button-group col-md-4">
-            <label class="radio-inline"><input type="radio" placeholder="Player 1 Control" id="control-player-1-input" 
+            <label class="radio-inline"><input type="radio" placeholder="Player 1 Control" id="control-player-1-input"
             name="control-input" value="1"/></label>
           </div>
 
           <div class="control-button-group col-md-4">
-            <label class="radio-inline"><input type="radio" placeholder="Player 2 Control" id="control-player-2-input" 
+            <label class="radio-inline"><input type="radio" placeholder="Player 2 Control" id="control-player-2-input"
             name="control-input" value="2"/></label>
           </div>
 
           <div class="control-button-group col-md-4">
-            <label class="radio-inline"><input type="radio" placeholder="Player 3 Control" id="control-player-3-input" 
+            <label class="radio-inline"><input type="radio" placeholder="Player 3 Control" id="control-player-3-input"
             name="control-input" value="3"/></label>
           </div>
 
           <div class="clearfix"></div>
         </div>
 
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-dismiss="modal" id="score-adjust-save">
+        <div class="modal-footer no-border">
+          <button type="button"   data-dismiss="modal" id="score-adjust-save">
             Save and Close
           </button>
         </div>
@@ -228,33 +155,35 @@
     </div>
   </div>
 
-  <div class="modal fade" id="game-load-modal" role="dialog" aria-labelledby="game-load-modal" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+  <div class="modal fade-scale" id="game-load-modal" role="dialog" aria-labelledby="game-load-modal" aria-hidden="true" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog" id="game-load-modal-dialog">
       <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title text-center">Please select a game file to upload</h4>
+        <div class="modal-header no-border">
+          <h4 class="modal-title text-center game-title">Please select a game file!</h4>
         </div>
         <div class="modal-body text-center" id="game-load-logo-div">
           <img src="./images/jeopardy_logo.jpg" id="game-load-logo-img">
         </div>
         <div class="modal-body text-center" id="game-load-input-div">
-          <input type="file" id="input-file">
-          <button type="button" class="btn btn-primary" id="game-load-input-button">Load Game</button>
-          <button type="button" class="btn btn-danger" id="kill-music-button">Kill Music </button>
-          <button type="button" class="btn btn-success" id="play-music-button">Play Music</button>
+          <div class="file-select">
+            <input type="file" id="input-file" accept="application/JSON">
+          </div>
+          <div class="file-btn">
+            <button type="button" id="game-load-input-button">Load Game</button>
+          </div>
         </div>
-        <div class="modal-footer">
+        <div class="modal-footer no-border">
           <p class="bg-danger" id="game-load-error" aria-hidden="true"></p>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="modal fade" id="final-jeopardy-modal" role="dialog" aria-labelledby="final-jeopardy-modal" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+  <div class="modal fade-scale" id="final-jeopardy-modal" role="dialog" aria-labelledby="final-jeopardy-modal" aria-hidden="true" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header text-center">
- 	      <button type="button" class="btn btn-primary" id="final-answer-show-button">Show</button>
+        <div class="modal-header no-border text-center">
+ 	      <button type="button" id="final-answer-show-button">Show</button>
           <h4 class="modal-title text-center" id="final-jeopardy-modal-answer">Modal title</h4>
         </div>
 
@@ -274,12 +203,12 @@
           <div class="clearfix"></div>
         </div>
 
-        <div id="final-scoring-buttons" class="text-center modal-footer">
+        <div id="final-scoring-buttons" class="text-center modal-footer no-border">
           <div class="score-button-group">
             <div class="col-md-4">
               <button type="button" class="btn btn-danger final-score-button" id="final-p1-wrong-button">
                 <span class="glyphicon glyphicon-remove"></span>P1
-              </button> 
+              </button>
               <button type="button" class="btn btn-success final-score-button" id="final-p1-right-button">
                 <span class="glyphicon glyphicon-ok"></span>P1
               </button>
@@ -309,8 +238,8 @@
           </div>
         </div><!-- /.scoring-buttons -->
 
-        <div class="modal-footer text-center">
-          <button type="button" class="btn btn-primary" data-dismiss="modal" id="final-score-close">
+        <div class="modal-footer no-border text-center">
+          <button type="button"   data-dismiss="modal" id="final-score-close">
             Close
           </button>
         </div>
@@ -319,11 +248,11 @@
     </div>
   </div>
 
-  <div class="modal fade" id="daily-double-modal" role="dialog" aria-labelledby="daily-double-modal" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+  <div class="modal fade-scale" id="daily-double-modal" role="dialog" aria-labelledby="daily-double-modal" aria-hidden="true" data-backdrop="static" data-keyboard="false">
 
     <div class="modal-dialog" id="daily-double-modal-dialog">
       <div class="modal-content" id="daily-double-modal-content">
-        <div class="modal-header">
+        <div class="modal-header no-border">
           <h4 class="modal-title text-center" id="daily-double-modal-title">Modal title</h4>
         </div>
 
@@ -337,8 +266,8 @@
         </div>
         <div class="clearfix"></div>
 
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary" id="daily-double-wager">
+        <div class="modal-footer no-border">
+          <button type="button"   id="daily-double-wager">
             Make Wager
           </button>
         </div>

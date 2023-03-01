@@ -1,13 +1,5 @@
 $(function(){
     $('#game-load-modal').modal('show');
-    chooseTheme = Math.random() < 0.5;
-    if (chooseTheme) {
-	    openingTheme.play();
-	}
-	else {
-		openingRockTheme.play();
-        // openingTheme.play();
-	}
     $('#game-load-input-button').click(function(){
         var file = $('#input-file').prop('files')[0];
         if ($('#input-file').val() !== '') {
@@ -22,10 +14,6 @@ $(function(){
                 $("#player-2-name").empty().text(playerTranslation[2]);
                 $("#player-3-name").empty().text(playerTranslation[3]);
                 loadBoard();
-                openingTheme.pause();
-                openingTheme.currentTime = 0;
-                openingRockTheme.pause();
-                openingRockTheme.currentTime = 0;
                 var boardFillSound = new Audio('./sounds/board_fill.mp3');
                 boardFillSound.play();
                 $('#game-load-modal').modal('hide');
@@ -36,20 +24,6 @@ $(function(){
 
         }
     });
-    $('#kill-music-button').click(function(){
-        openingTheme.pause();
-        openingTheme.currentTime = 0;
-        openingRockTheme.pause();
-        openingRockTheme.currentTime = 0;
-    });
-    $('#play-music-button').click(function(){
-        openingTheme.play();
-        openingTheme.currentTime = 0;
-        openingRockTheme.pause();
-        openingRockTheme.currentTime = 0;
-    });
-
-
     $('#next-round').unbind('click').click(function(e){
         e.stopPropagation();
         currentRound++;
@@ -65,107 +39,71 @@ $(function(){
         $('#main-board').empty();
         loadBoard();
     });
-
     $('#end-round').unbind('click').click(function(e){
         e.stopPropagation();
         var endRoundSound = new Audio('./sounds/end_of_round.mp3');
         endRoundSound.play();
         $('.unanswered').removeClass('unanswered').unbind().css('cursor','not-allowed');
     });
+    $('#question-modal').on('show.bs.modal', function (e) {
+        console.log('modal show');
+    });
+    
+    $('#question-modal').on('hidden.bs.modal', function (e) {
+        console.log('modal close');
+        $('#question-media').show();
+        $('#question').show();
+    });
+    
     $(document).on('click', '.unanswered', function(){
         //event bound to clicking on a tile. it grabs the data from the click event, populates the modal, fires the modal, and binds the answer method
         var category = $(this).parent().data('category');
         var question = $(this).data('question');
         var answer = currentBoard[category].questions[question].answer;
         var value = currentBoard[category].questions[question].value;
-        var questionImage = currentBoard[category].questions[question].image;
+        var questionMedia = currentBoard[category].questions[question].media;
         var isDailyDouble = 'daily-double' in currentBoard[category].questions[question] ?
             currentBoard[category].questions[question]['daily-double'] : false;
 
         if (isDailyDouble) {
             var dailyDoubleSound = new Audio('./sounds/daily_double.mp3');
             dailyDoubleSound.play();
-            $('#daily-double-modal-title').empty().text(currentBoard[category].name + ' - $' + value);
+            $('#daily-double-modal-title').empty().text(currentBoard[category].name + ' - ' + value);
             $('#daily-double-wager-input').val('');
             $('#daily-double-modal').modal('show');
         }
         else {
             // Candidate for refactoring.
-            $('#modal-answer-title').empty().text(currentBoard[category].name + ' - $' + value);
+            $('#modal-answer-title').empty().text(currentBoard[category].name + ' - ' + value);
             $('#question').empty().text(currentBoard[category].questions[question].question);
-            if (questionImage){
-                if (questionImage.startsWith("http") || questionImage.startsWith("data")) {
+            if (questionMedia){
+                if (questionMedia.startsWith("http")) {
+                    console.log('web link');
                     srcPrefix = ''
-                }
-                else {
+                } else if(questionMedia.endsWith(".mp4")) {
+                    console.log('video');
+                    srcPrefix = './'
+                    $('#question-media').empty().append("<video src=" + srcPrefix + questionMedia + ` "type="video/mp4" controls> </video>"`).show();
+
+                } else if(questionMedia.endsWith(".png")) {
+                    console.log('image');
+                    srcPrefix = './'
+                    $('#question-media').empty().append("<img src=" + srcPrefix + questionMedia + ">").show();
+                } else {
                     srcPrefix = './'
                 }
-                $('#question-image').empty().append("<img src=" + srcPrefix + questionImage + ">").show();
+
+                $('#question').addClass("caption");
             }
             else {
-                $('#question-image').empty().hide();
+                $('#question-media').empty().hide();
             }
             $('#answer-text').text(answer).hide();
             $('#question-modal').modal('show');
-            //resizeAnswerModal();
-            //$('#answer-close-button').hide().data('question', question).data('category', category);
             $('#answer-close-button').data('question', question).data('category', category);
             $('#answer-show-button').show();
-            $('#question-modal .score-button').data('value', value);
-            $('#question-modal .score-button').prop('disabled', false);
-            $('#question-modal .score-button.btn-success').data('question', question).data('category', category);
-
         }
-        $('#daily-double-wager').click(function(){
-            var inputDailyDoubleValue = $('#daily-double-wager-input').val();
-            var maxRoundWager = Math.max.apply(Math, currentBoard[0]['questions'].map(function(o){return o.value}));
-            var scoreVariable = 'score_player_' + control;
-
-            //get max of maxRoundWager and controlling user score.
-            if ( !(isNaN(inputDailyDoubleValue)) && inputDailyDoubleValue !== '' && parseInt(inputDailyDoubleValue) >= 5
-            	&& Math.max(maxRoundWager, window[scoreVariable]) >= parseInt(inputDailyDoubleValue) ) {
-
-                value = parseInt(inputDailyDoubleValue);
-                $('#modal-answer-title').empty().text(currentBoard[category].name + ' - $' + value);
-                $('#question-modal .score-button').data('value', value).data('question', question).data('category', category);
-                $('#daily-double-modal').modal('hide');
-
-                $('#question').empty().text(currentBoard[category].questions[question].question);
-                if (questionImage){
-                    $('#question-image').empty().append("<img src=./" + questionImage + ">").show();
-                }
-                else {
-                    $('#question-image').empty().hide();
-                }
-                $('#answer-text').text(answer).hide();
-                $('#question-modal').modal('show');
-                //resizeAnswerModal();
-                //$('#answer-close-button').hide().data('question', question).data('category', category);
-                $('#answer-close-button').data('question', question).data('category', category);
-                $('#answer-show-button').show();
-                $('#question-modal .score-button').prop('disabled', true);
-                $('#p' + control.toString() + '-wrong-button').prop('disabled', false);
-                $('#p' + control.toString() + '-right-button').prop('disabled', false);
-                $('#question-modal .score-button.btn-success').data('question', question).data('category', category);
-
-            }
-        });
-		//$('#question-modal').on('loaded.bs.modal', resizeAnswerModal());
-		$('#question-modal').on('shown.bs.modal', function (e) {
-		  resizeAnswerModal();
-		})
         handleAnswer();
-    });
-    $('#score-adjust').click(function(){
-        $('#score-adjust-modal').modal('show');
-        $('#name-player-1-input').val(playerTranslation[1]);
-        $('#name-player-2-input').val(playerTranslation[2]);
-        $('#name-player-3-input').val(playerTranslation[3]);
-        $('#score-player-1-input').val(score_player_1);
-        $('#score-player-2-input').val(score_player_2);
-        $('#score-player-3-input').val(score_player_3);
-        $("input[name=control-input][value=" + control + "]").attr('checked', 'checked');
-        adjustScores();
     });
     $(document).on('click', '#final-jeopardy-question-button', function(){
         $(this).hide();
@@ -193,16 +131,6 @@ $(function(){
         $('#final-jeopardy-modal').modal('show');
         handleFinalAnswer();
     });
-    $(window).resize(function(){
-	    var textHeight = Math.max.apply(null, ($('.category-title').map(function(){return $(this).height();})));
-	    var width = Math.max.apply(null, ($('.category-title').map(function(){return $(this).parent().width();})));
-	    // If possible to keep aspect ratio, switch to it.
-	    //var aspectRatioHeight = width * .75;
-	    var aspectRatioHeight = width * (9 / 16);
-	    var height = Math.max(textHeight, aspectRatioHeight);
-	    $('.category-title').height(height).width(width);
-    });
-
 });
 
 var score_player_1 = 0;
@@ -218,10 +146,6 @@ var timerMaxCount = 5;
 var timerObject;
 var timerCount;
 var gameDataFile;
-var openingRockTheme = new Audio('./sounds/theme_rock.mp3');
-var openingTheme = new Audio('./sounds/theme.mp3');
-// var openingTheme = new Audio('./sounds/theme_modern.mp3');
-
 
 function runTimer() {
     timerObject = setTimeout(function(){
@@ -246,54 +170,12 @@ function resetTimer() {
     $('.timer-square').css('background-color', 'black');
 }
 
-function adjustScores(){
-    $('#score-adjust-save').click(function(){
-        for (var i = 1; i < 4; i++) {
-            var scoreVariableName = 'score_player_' + i;
-            var inputName = '#score-player-' + i + '-input';
-            var newScoreValue = $(inputName).val();
-            if (!(isNaN(newScoreValue))) {
-                window[scoreVariableName] = parseInt(newScoreValue);
-            }
-
-            var nameInputName = '#name-player-' + i + '-input';
-            var labelInputName = '#player-' + i + '-name';
-            var newNameValue = $(nameInputName).val();
-            if (newNameValue) {
-                playerTranslation[i] = newNameValue;
-                $(labelInputName).empty().text(newNameValue);
-            }
-        }
-		control = $("input[name=control-input]:checked").val();
-
-        updateScore();
-    });
-}
-
-function updateScore(){
-	var score_text = '';
-	score_player_1 < 0 ? score_text = '-$' + Math.abs(score_player_1).toString() : score_text = "$" + score_player_1.toString();
-	score_player_1 < 0 ? $('#player-1-score').css('color', 'red') : $('#player-1-score').css('color', 'white');
-    $('#player-1-score').empty().text(score_text);
-
-	score_player_2 < 0 ? score_text = '-$' + Math.abs(score_player_2).toString() : score_text = "$" + score_player_2.toString();
-	score_player_2 < 0 ? $('#player-2-score').css('color', 'red') : $('#player-2-score').css('color', 'white');
-    $('#player-2-score').empty().text(score_text);
-
-	score_player_3 < 0 ? score_text = '-$' + Math.abs(score_player_3).toString() : score_text = "$" + score_player_3.toString();
-	score_player_3 < 0 ? $('#player-3-score').css('color', 'red') : $('#player-3-score').css('color', 'white');
-    $('#player-3-score').empty().text(score_text);
-
-	$('#control-player').empty().text(playerTranslation[control]);
-    //$('#player-2-score').empty().text(score_player_2);
-    //$('#player-3-score').empty().text(score_player_3);
-}
 
 function loadBoard() {
     //function that turns the board.json (loaded in the the currentBoard variable) into a jeopardy board
     var board = $('#main-board');
     if (rounds[currentRound] === "final-jeopardy") {
-        finalQuestionImage = currentBoard['image'];
+        finalquestionMedia = currentBoard['image'];
         $('#end-round').hide();
         $('#control-info').hide();
         $('#main-board-categories').append('<div class="text-center col-md-6 col-md-offset-3"><h2 class="category-text">' +
@@ -307,14 +189,14 @@ function loadBoard() {
         $('#final-jeopardy-question').hide();
         $('#final-jeopardy-music-button').hide();
         $('#final-jeopardy-answer-button').hide();
-        if (finalQuestionImage){
-            if (finalQuestionImage.startsWith("http") || finalQuestionImage.startsWith("data")) {
+        if (finalquestionMedia){
+            if (finalquestionMedia.startsWith("http") || finalquestionMedia.startsWith("data")) {
                 srcPrefix = ''
             }
             else {
                 srcPrefix = './'
             }
-           $('#final-image').empty().append("<img src=" + srcPrefix + finalQuestionImage + ">").hide();
+           $('#final-image').empty().append("<img src=" + srcPrefix + finalquestionMedia + ">").hide();
         }
         else {
             $('#final-image').empty().hide();
@@ -364,7 +246,7 @@ function loadBoard() {
             $.each(category.questions, function(n,question){
                 // Questions
                 column.append('<div class="well question unanswered text-center" data-question="' +
-                    n + '">$' + question.value + '</div>');
+                    n + '">' + question.value + '</div>');
             });
         });
     }
@@ -376,28 +258,6 @@ function loadBoard() {
     var aspectRatioHeight = width * (9 / 16);
     var height = Math.max(textHeight, aspectRatioHeight);
     $('.category-title').height(height).width(width);
-
-    /*
-    var questionTextHeight = Math.max.apply(null, ($('.question').map(function(){return $(this).height();})));
-    var questionWidth = Math.max.apply(null, ($('.question').map(function(){return $(this).parent().width();})));
-    var questionAspectRatioHeight = questionWidth * (9/16);
-    var questionFinalHeight = Math.max(questionTextHeight, questionAspectRatioHeight);
-    $('.question').height(questionFinalHeight);
-    */
-}
-
-function resizeAnswerModal() {
-    var otherHeights = ($('#question-modal-content .modal-header, #question-modal-content .modal-footer').map(function(){return $(this).outerHeight();}));
-    var totalModalHeight = $('#question-modal-content').height();
-    for(var i=0; i < otherHeights.length; i++) { totalModalHeight -= otherHeights[i]; }
-    var modalBodyObj = $('#question-modal-content .modal-body');
-    var modalBodyPadding = modalBodyObj.innerHeight() - modalBodyObj.height();
-    //modalBodyObj.outerHeight(totalModalHeight);
-    modalBodyObj.css('height',(totalModalHeight - modalBodyPadding)); // Adjust again for padding
-
-    questionCenterPadding = ($('#question-modal-body').height() - ($('#question-image').height() + $('#question').height()))/2;
-    $('#question').css('padding-top', questionCenterPadding);
-
 }
 
 function handleAnswer(){
@@ -428,19 +288,19 @@ function handleAnswer(){
             $('#question-modal').modal('hide');
 
         }
-        updateScore();
     });
 
     $('#answer-show-button').click(function(){
         $(this).hide();
+        $('#question-media').hide();
+        $('#question').hide();
         $('#answer-text').show();
-        resizeAnswerModal();
-        //$('#answer-close-button').show();
     });
     $('#answer-close-button').click(function(){
         var tile = $('div[data-category="' + $(this).data('category') + '"]>[data-question="' +
             $(this).data('question') + '"]')[0];
         $(tile).empty().append('&nbsp;<div class="clearfix"></div>').removeClass('unanswered').unbind().css('cursor','not-allowed');
+        $('#question').removeClass("caption");
         $('#question-modal').modal('hide');
     });
 
@@ -476,17 +336,12 @@ function handleFinalAnswer(){
         $(this).prop('disabled', true);
         $(otherButtonID).prop('disabled', true);
         $(wagerID).prop('disabled', true).val('$' + window[scoreVariable]);
-
-        updateScore();
-
     });
 
 
     $('#final-answer-show-button').click(function(){
         $(this).hide();
         $('#final-jeopardy-modal-answer').show();
-        //resizeAnswerModal();
-        //$('#answer-close-button').show();
     });
 
 }
