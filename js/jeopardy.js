@@ -10,9 +10,6 @@ $(function(){
                 var data = $.parseJSON(fileText);
                 jsonData = data;
                 currentBoard = jsonData[rounds[currentRound]];
-                $("#player-1-name").empty().text(playerTranslation[1]);
-                $("#player-2-name").empty().text(playerTranslation[2]);
-                $("#player-3-name").empty().text(playerTranslation[3]);
                 loadBoard();
                 $('#game-load-modal').modal('hide');
             }
@@ -114,41 +111,10 @@ $(function(){
     });
 });
 
-var score_player_1 = 0;
-var score_player_2 = 0;
-var score_player_3 = 0;
-var control = 1;
 var rounds = ['jeopardy', 'double-jeopardy', 'final-jeopardy'];
-var playerTranslation = {1: 'Red', 2: 'Blue', 3: 'Green'};
 var currentBoard;
 var currentRound = 0;
-var isTimerActive = false;
-var timerMaxCount = 5;
-var timerObject;
-var timerCount;
 var gameDataFile;
-
-function runTimer() {
-    timerObject = setTimeout(function(){
-        timerCount++;
-        $('.timer-set-' + timerCount).css('background-color', 'black');
-        if (timerCount < timerMaxCount) {
-            runTimer();
-        }
-        else {
-            // Doo doo doo
-            resetTimer();
-        }
-    }, 1000);
-}
-
-function resetTimer() {
-    clearTimeout(timerObject);
-    isTimerActive = false;
-    timerCount = 0;
-    $('.timer-square').css('background-color', 'black');
-}
-
 
 function loadBoard() {
     //function that turns the board.json (loaded in the the currentBoard variable) into a jeopardy board
@@ -156,7 +122,6 @@ function loadBoard() {
     if (rounds[currentRound] === "final-jeopardy") {
         finalquestionMedia = currentBoard['image'];
         $('#end-round').hide();
-        $('#control-info').hide();
         $('#main-board-categories').append('<div class="text-center  col-md-6 col-md-offset-3"><h2 class="category-text">' +
             currentBoard['category'] + '</h2></div>').css('background-color', '#F9C203');
         finalImage = '<div id="final-image" class="text-center"></div>';
@@ -179,23 +144,8 @@ function loadBoard() {
         else {
             $('#final-image').empty().hide();
         }
-        $('#wager-player-1-input').attr("placeholder", playerTranslation[1] + " Wager");
-        $('#wager-player-2-input').attr("placeholder", playerTranslation[2] + " Wager");
-        $('#wager-player-3-input').attr("placeholder", playerTranslation[3] + " Wager");
     }
     else {
-	    if (rounds[currentRound] === "double-jeopardy") {
-		    if (score_player_1 <= score_player_2 && score_player_1 <= score_player_3) {
-			    control = 1;
-		    }
-		    else if (score_player_2 <= score_player_3) {
-			    control = 2;
-		    }
-		    else {
-			    control = 3;
-		    }
-	    }
-        $('#control-player').empty().text(playerTranslation[control]);
         $('#end-round').show();
         board.css('background-color', 'black');
         var columns = currentBoard.length;
@@ -239,35 +189,6 @@ function loadBoard() {
 }
 
 function handleAnswer(){
-    $('.score-button').unbind("click").click(function(e){
-        e.stopPropagation();
-        var buttonID = $(this).attr("id");
-        var answerValue = parseInt($(this).data('value'));
-        var buttonAction = buttonID.substr(3, 5);
-        var playerNumber = buttonID.charAt(1);
-        var scoreVariable = 'score_player_' + playerNumber;
-
-        buttonAction === 'right' ? window[scoreVariable] += answerValue
-            : window[scoreVariable] -= answerValue;
-        $(this).prop('disabled', true);
-        var otherButtonID = '#p' + playerNumber + '-' + (buttonAction === 'right' ? 'wrong' : 'right') + '-button';
-        $(otherButtonID).prop('disabled', true);
-        resetTimer();
-
-        // Possible behavior of disabling all scoring after a right answer?
-        if (buttonAction === 'right') {
-            var tile = $('div[data-category="' + $(this).data('category') + '"]>[data-question="' +
-                $(this).data('question') + '"]')[0];
-            //console.log(tile);
-            $('#question-modal .score-button').prop('disabled', true);
-            control = playerNumber;
-
-            $(tile).empty().append('&nbsp;<div class="clearfix"></div>').removeClass('unanswered').unbind().css('cursor','not-allowed');
-            $('#question-modal').modal('hide');
-
-        }
-    });
-
     $('#answer-show-button').click(function(){
         $(this).hide();
         $('#question-media').hide();
@@ -280,20 +201,6 @@ function handleAnswer(){
         $(tile).empty().append('&nbsp;<div class="clearfix"></div>').removeClass('unanswered').unbind().css('cursor','not-allowed');
         $('#question').removeClass("caption");
         $('#question-modal').modal('hide');
-    });
-
-    $('#timer-grid').unbind("click").click(function(e){
-        e.stopPropagation();
-        if (isTimerActive) {
-            resetTimer();
-        }
-        else {
-            $('.timer-square').css('background-color', 'red');
-            isTimerActive = true;
-            timerCount = 0;
-            runTimer();
-        }
-        //isTimerActive = isTimerActive ? false : true;
     });
 }
 
