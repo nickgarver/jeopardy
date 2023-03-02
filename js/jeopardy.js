@@ -14,8 +14,6 @@ $(function(){
                 $("#player-2-name").empty().text(playerTranslation[2]);
                 $("#player-3-name").empty().text(playerTranslation[3]);
                 loadBoard();
-                var boardFillSound = new Audio('./sounds/board_fill.mp3');
-                boardFillSound.play();
                 $('#game-load-modal').modal('hide');
             }
             reader.onerror = function(e){
@@ -41,18 +39,18 @@ $(function(){
     });
     $('#end-round').unbind('click').click(function(e){
         e.stopPropagation();
-        var endRoundSound = new Audio('./sounds/end_of_round.mp3');
-        endRoundSound.play();
         $('.unanswered').removeClass('unanswered').unbind().css('cursor','not-allowed');
     });
     $('#question-modal').on('show.bs.modal', function (e) {
         console.log('modal show');
     });
-    
     $('#question-modal').on('hidden.bs.modal', function (e) {
         console.log('modal close');
         $('#question-media').show();
         $('#question').show();
+    });
+    $('#input-file').click(function(){
+        $('#game-title').removeClass("blink");
     });
     
     $(document).on('click', '.unanswered', function(){
@@ -66,8 +64,6 @@ $(function(){
             currentBoard[category].questions[question]['daily-double'] : false;
 
         if (isDailyDouble) {
-            var dailyDoubleSound = new Audio('./sounds/daily_double.mp3');
-            dailyDoubleSound.play();
             $('#daily-double-modal-title').empty().text(currentBoard[category].name + ' - ' + value);
             $('#daily-double-wager-input').val('');
             $('#daily-double-modal').modal('show');
@@ -108,28 +104,13 @@ $(function(){
     $(document).on('click', '#final-jeopardy-question-button', function(){
         $(this).hide();
         $('#final-jeopardy-question').show();
-        var revealSound = new Audio('./sounds/final_jeopardy.mp3');
-        revealSound.play();
         $('#final-image').show();
         $('#final-jeopardy-logo-img').hide();
-        $('#final-jeopardy-music-button').show();
-        // console.log('30 seconds, good luck'); Cue music
-    });
-    $(document).on('click', '#final-jeopardy-music-button',function(){
-        $(this).hide();
-        var thinkMusicSound = new Audio('./sounds/think_music.mp3');
-        thinkMusicSound.play();
-
-        setTimeout(function(){
-            $('#final-jeopardy-answer-button').show();
-        }, 30000);
+        $('#final-jeopardy-answer-button').show();
     });
     $(document).on('click', '#final-jeopardy-answer-button',function(){
         $(this).hide();
-        $('#final-jeopardy-modal-answer').text(currentBoard['answer']);
-        $('#final-jeopardy-modal-answer').hide();
-        $('#final-jeopardy-modal').modal('show');
-        handleFinalAnswer();
+        $('#final-jeopardy-question').text(currentBoard['answer']);
     });
 });
 
@@ -155,8 +136,6 @@ function runTimer() {
             runTimer();
         }
         else {
-            var timeUpAudio = new Audio('./sounds/time_up.mp3');
-            timeUpAudio.play();
             // Doo doo doo
             resetTimer();
         }
@@ -178,16 +157,15 @@ function loadBoard() {
         finalquestionMedia = currentBoard['image'];
         $('#end-round').hide();
         $('#control-info').hide();
-        $('#main-board-categories').append('<div class="text-center col-md-6 col-md-offset-3"><h2 class="category-text">' +
-            currentBoard['category'] + '</h2></div>').css('background-color', 'navy');
+        $('#main-board-categories').append('<div class="text-center  col-md-6 col-md-offset-3"><h2 class="category-text">' +
+            currentBoard['category'] + '</h2></div>').css('background-color', '#F9C203');
         finalImage = '<div id="final-image" class="text-center"></div>';
-        board.append('<div class="text-center col-md-6 col-md-offset-3"><h2><img src="./images/final_jeopardy.png" id="final-jeopardy-logo-img"></h2>'+
+        board.append('<div class="text-center final-panel col-md-6 col-md-offset-3"><h2><img src="./images/final-jeopardy-img.jpg" id="final-jeopardy-logo-img"></h2>'+
         	finalImage + '<h2 id="final-jeopardy-question" class="question-text">' +
-            currentBoard['question'] + '</h2><button class="btn btn-primary" id="final-jeopardy-question-button">Show Question</button>' +
-            '<button class="btn btn-primary" id="final-jeopardy-music-button">30 Seconds, Good Luck</button>' +
-            '<button class="btn btn-primary" id="final-jeopardy-answer-button">Show Answer</button></div>').css('background-color', 'navy');
-        $('#final-jeopardy-question').hide();
-        $('#final-jeopardy-music-button').hide();
+            currentBoard['question'] + '</h2><div id="show-question-box"><button class="btn" id="final-jeopardy-question-button">Show Question</button></div>' +
+            '<button class="btn" id="final-jeopardy-answer-button">Show Final Answer</button>');
+            $('#main-board').css('background-color', '#F9C203');
+            $('#final-jeopardy-question').hide();
         $('#final-jeopardy-answer-button').hide();
         if (finalquestionMedia){
             if (finalquestionMedia.startsWith("http") || finalquestionMedia.startsWith("data")) {
@@ -319,29 +297,3 @@ function handleAnswer(){
     });
 }
 
-function handleFinalAnswer(){
-    $('.final-score-button').unbind('click').click(function(e){
-        e.stopPropagation();
-        var buttonID = $(this).attr("id");
-        var buttonAction = buttonID.substr(9,5);
-        var playerNumber = buttonID.charAt(7);
-        var wagerID = '#wager-player-' + playerNumber + '-input';
-        var wager = $(wagerID).val() == '' ? 0 : parseInt($(wagerID).val());
-        var scoreVariable = 'score_player_' + playerNumber;
-        var otherButtonID = '#final-p' + playerNumber + '-' +
-            (buttonAction === 'right' ? 'wrong' : 'right') + '-button';
-
-        buttonAction === 'right' ? window[scoreVariable] += wager : window[scoreVariable] -= wager;
-
-        $(this).prop('disabled', true);
-        $(otherButtonID).prop('disabled', true);
-        $(wagerID).prop('disabled', true).val('$' + window[scoreVariable]);
-    });
-
-
-    $('#final-answer-show-button').click(function(){
-        $(this).hide();
-        $('#final-jeopardy-modal-answer').show();
-    });
-
-}

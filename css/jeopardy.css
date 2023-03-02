@@ -79,6 +79,7 @@ button:active {
 	padding: 30px;
 }
 
+/* completed answer */
 .question {
 	background-color: #886a29;
 	color: #131313;
@@ -133,6 +134,7 @@ body div {
 
 .panel {
 	border: 0px;
+	box-shadow: 0 1px 2px rgb(0 0 0 / 0%);
 }
 
 .panel-footer {
@@ -140,6 +142,10 @@ body div {
 	background-color: #F9C203;
 	color: white;
 	border: 0px;
+}
+
+.panel-default {
+	border: 0px !important;
 }
 
 #daily-double-modal .modal-footer {
@@ -193,7 +199,7 @@ body div {
 	border-radius: 0;
 }
 
-#question-modal-body {
+.card-body {
 	margin-left: 10%;
 	margin-right: 10%;
 	height: 75vh;
@@ -214,7 +220,7 @@ body div {
 
 .question-text, #answer-text {
 	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
-	font-size: 5vw;
+	font-size: 5vh;
 	text-align: center;
 	color: #131313;
 	padding: 5%;
@@ -225,8 +231,9 @@ body div {
 	font-size: 2vw;
 	padding: 5%;
 }
-#question-image {
-}
+
+/* #question-image {
+} */
 
 #question-image img, #final-image img{
 	padding: 10px;
@@ -284,3 +291,55 @@ input::file-selector-button:active {
 	opacity: 1;
 	transform: scale(1);
   }
+
+  .blink {
+	animation: blinker 1s step-start infinite;
+  }
+  
+  @keyframes blinker {
+	50% {
+	  opacity: 0;
+	}
+  }
+
+
+.final-panel {
+	height: 75vh;
+	padding: 10px;
+	background-color: #F9C203;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+#show-question-box {
+	padding: 50px;
+}
+#final-jeopardy-logo-img {
+	padding: 10px;
+	max-height: 50vh;
+}
+
+#final-jeopardy-question {
+	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+	font-size: 5vh;
+	text-align: center;
+	color: #131313;
+	padding: 5%;
+}
+#final-jeopardy-question-button{
+	padding: 15px;
+}
+#final-jeopardy-question-button:hover {
+	color: white;
+	background-color: #252424 !important;
+}
+
+#final-jeopardy-question-button:active {
+	color: white;
+	background-color: #000000;
+}
+/* #question-text {
+
+} */
