@@ -7,7 +7,8 @@
                     "value":1,
                     "question":"transformer",
                     "media":"images/flash.png",
-                    "answer": "Who is Optimus Prime?"
+                    "answer": "Who is Optimus Prime?",
+                    "daily-double": true
                 },
                 {
                     "value":2,
@@ -18,12 +19,15 @@
                 {
                     "value":3,
                     "question":"ROBOTS B.O.B. AND V.I.N.C.E.N.T. PROVIDED SOME COMIC RELIEF IN THIS DARK 1979 DISNEY SCI-FI FILM",
-                    "answer": "What is The Black Hole?"
+                    "answer": "What is The Black Hole?",
+                    "media": "https://www.youtube.com/embed/x6vCYN9DA_Q"
                 },
                 {
                     "value":4,
                     "question":"CHRIS JERICHO HOSTED THIS AUTOMATON FIGHTING COMPETITION ON SYFY IN EARLY 2013",
-                    "answer": "What is Robot Combat League?"
+                    "answer": "What is Robot Combat League?",
+                    "daily-double": true,
+                    "media": "https://www.youtube.com/watch?v=oBhuP8KhqUA"
                 },
                 {
                     "value": 5,

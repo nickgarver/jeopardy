@@ -80,7 +80,7 @@
     </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->
 
-  <div class="modal fade-scale" id="game-load-modal" role="dialog" aria-labelledby="game-load-modal" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+  <div class="modal" id="game-load-modal" role="dialog" aria-labelledby="game-load-modal" aria-hidden="true" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog" id="game-load-modal-dialog">
       <div class="modal-content">
         <div class="modal-header no-border">
@@ -115,35 +115,18 @@
     </div>
   </div>
 
-  <div class="modal fade-scale" id="daily-double-modal" role="dialog" aria-labelledby="daily-double-modal" aria-hidden="true" data-backdrop="static" data-keyboard="false">
-
-    <div class="modal-dialog" id="daily-double-modal-dialog">
-      <div class="modal-content" id="daily-double-modal-content">
-        <div class="modal-header no-border">
-          <h4 class="modal-title text-center" id="daily-double-modal-title">Modal title</h4>
-        </div>
-
-        <div class="modal-body text-center">
-	        <img src="./images/daily_double.jpg" id="daily-double-logo-img">
-        </div>
-
-        <div id="daily-double-score-input-div" class="modal-body text-center col-md-4 col-md-offset-4">
-          <input type="text" class="form-control" placeholder="Daily Double Wager" id="daily-double-wager-input" />
-          <div class="clearfix"></div>
-        </div>
-        <div class="clearfix"></div>
-
-        <div class="modal-footer no-border">
-          <button type="button"   id="daily-double-wager">
-            Make Wager
-          </button>
-        </div>
-
-
+  <div class="modal fade-scale" id="daily-double-modal" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false" hidden>
+    <div id="daily-double-content">
+      <div class="text-center">
+        <img class="shake-img" src="./images/daily_double.jpg" id="daily-double-logo-img">
+      </div>
+      
+      <div class="modal-footer no-border">
+        <button type="button"   id="daily-double-wager">
+          Show Question
+        </button>
       </div>
     </div>
-
-
   </div>
 
 </body>

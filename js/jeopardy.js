@@ -60,42 +60,39 @@ $(function(){
         var isDailyDouble = 'daily-double' in currentBoard[category].questions[question] ?
             currentBoard[category].questions[question]['daily-double'] : false;
 
-        if (isDailyDouble) {
-            $('#daily-double-modal-title').empty().text(currentBoard[category].name + ' - ' + value);
-            $('#daily-double-wager-input').val('');
+        if (isDailyDouble) { 
             $('#daily-double-modal').modal('show');
         }
-        else {
-            // Candidate for refactoring.
-            $('#modal-answer-title').empty().text(currentBoard[category].name + ' - ' + value);
-            $('#question').empty().text(currentBoard[category].questions[question].question);
-            if (questionMedia){
-                if (questionMedia.startsWith("http")) {
-                    console.log('web link');
-                    srcPrefix = ''
-                } else if(questionMedia.endsWith(".mp4")) {
-                    console.log('video');
-                    srcPrefix = './'
-                    $('#question-media').empty().append("<video src=" + srcPrefix + questionMedia + ` "type="video/mp4" controls> </video>"`).show();
 
-                } else if(questionMedia.endsWith(".png")) {
-                    console.log('image');
-                    srcPrefix = './'
-                    $('#question-media').empty().append("<img src=" + srcPrefix + questionMedia + ">").show();
-                } else {
-                    srcPrefix = './'
-                }
+        $('#modal-answer-title').empty().text(currentBoard[category].name + ' - ' + value);
+        $('#question').empty().text(currentBoard[category].questions[question].question);
+        if (questionMedia){
+            if (questionMedia.startsWith("http")) {
+                console.log('web link');
+                // srcPrefix = ''
+                $('#question-media').empty().append(`<iframe src=" ` + questionMedia.replace("watch?v=", "embed/") + `"> </iframe>`).show();
+            } else if(questionMedia.endsWith(".mp4")) {
+                console.log('video');
+                srcPrefix = './'
+                $('#question-media').empty().append("<video src=" + srcPrefix + questionMedia + ` "type="video/mp4" controls> </video>"`).show();
 
-                $('#question').addClass("caption");
+            } else if(questionMedia.endsWith(".png")) {
+                console.log('image');
+                srcPrefix = './'
+                $('#question-media').empty().append("<img src=" + srcPrefix + questionMedia + ">").show();
+            } else {
+                srcPrefix = './'
             }
-            else {
-                $('#question-media').empty().hide();
-            }
-            $('#answer-text').text(answer).hide();
-            $('#question-modal').modal('show');
-            $('#answer-close-button').data('question', question).data('category', category);
-            $('#answer-show-button').show();
+
+            $('#question').addClass("caption");
         }
+        else {
+            $('#question-media').empty().hide();
+        }
+        $('#answer-text').text(answer).hide();
+        $('#question-modal').modal('show');
+        $('#answer-close-button').data('question', question).data('category', category);
+        $('#answer-show-button').show();
         handleAnswer();
     });
     $(document).on('click', '#final-jeopardy-question-button', function(){
@@ -108,6 +105,9 @@ $(function(){
     $(document).on('click', '#final-jeopardy-answer-button',function(){
         $(this).hide();
         $('#final-jeopardy-question').text(currentBoard['answer']);
+    });
+    $(document).on('click', '#daily-double-wager',function(){
+        $('#daily-double-modal').modal('hide');
     });
 });
 

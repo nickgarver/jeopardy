@@ -1,3 +1,25 @@
+html {
+	background-color: #F9C203;
+}
+body {
+	height: 100vh;
+	max-width: 1080px;
+	width: 100vw;
+	background-color: #F9C203;
+	color: white;
+	line-height: 1;
+	margin: 0 auto;
+	padding: 0px 35px 0px 35px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+body div {
+	border-radius: 0px !important;
+}
+
 #player-1-score-div {
 	text-align: right;
 }
@@ -8,15 +30,154 @@
 
 #main-board {
 	background-image: none;
-	padding: 0px 5px 0px 0px;
+	/* background-color: red !important; */
+	/* padding: 0px 5px 0px 0px; */
+	padding: 5px;
+	display: flex;
+	/* margin-top: -15px; */
+	height: auto;
+	align-items: center;
+    justify-content: center;
 }
 
 #main-board-categories{
 	background-image: none;
 	background-color: black;
+	padding: 5px;
 	border: none;
 	color: white;
-	padding: 5px 5px 0px 0px;
+	/* padding: 5px 5px 0px 0px; */
+	display: flex;
+	height: auto;
+	align-items: center;
+    justify-content: center;
+}
+
+.category {
+	width: 154px;
+	padding-left: 0px;
+	padding-right: 0px;
+	margin: 0px;
+	border: none;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+    justify-content: center;
+}
+
+.category-title {
+	background-image: none;
+	border: none;
+	display: table-cell;
+	vertical-align: middle;
+	position: relative;
+	height: auto !important;
+	/* background-color: blanchedalmond; */
+}
+
+.category-text {
+	color: #131313;
+	font-size: 24px;
+	font-family: Impact;
+	font-weight: bold;
+
+}
+/* main panels */
+.well {
+	background-image: none;
+	background-color: #FBC104;
+	border: none;
+	border-radius: 0px;
+	margin: 1px;
+	height: 100px;
+	width: 98%;
+	padding: 10px;
+	display: flex;
+	align-items: center;
+    justify-content: center;
+}
+
+/* completed answer */
+.question {
+	background-color: #886a29;
+	color: #131313;
+	font-size: 50px;
+	font-family: Impact;
+}
+
+.unanswered {
+	background-color: #FBC104;
+	cursor: pointer;
+}
+
+.unanswered:hover {
+	background-color: #fbd864;
+}
+
+.unanswered:active {
+	background-color: #e0ad25;
+}
+
+.modal {
+	padding-left: 0px;
+	/* background-color: chocolate; */
+}
+
+.modal-title {
+	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+	text-align: center;
+}
+
+.modal-content {
+	background-color: #F9C203;
+	color: #131313;
+	border-radius: 0px;
+	margin: 0 auto;
+	box-shadow: none;
+	border: 0px;
+	height: 800px !important;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.panel {
+	border: 0px;
+	box-shadow: 0 1px 2px rgb(0 0 0 / 0%);
+}
+
+.panel-footer {
+	padding: 15px;
+	background-color: #F9C203;
+	color: white;
+	border: 0px;
+}
+
+.panel-default {
+	border: 0px !important;
+}
+
+#daily-double-modal {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	/* flex-direction: column; */
+}
+
+#daily-double-content {
+	padding: 175px;
+	background-color: #F9C203;
+	/* overflow: hidden; */
+}
+
+.modal-footer {
+	text-align: center;
+}
+
+.no-border {
+	border: 0px !important;
 }
 
 button {
@@ -46,147 +207,28 @@ button:active {
 	height: 15px
 }
 
-.category {
-	padding-left: 0px;
-	padding-right: 0px;
-}
-
-.category-title {
-	background-image: none;
-	border: none;
-	display: table-cell;
-	vertical-align: middle;
-	position: relative;
-	height: 75px !important;
-}
-
-.category-text {
-	color: #131313;
-	font-size: 24px;
-	font-family: Impact;
-	font-weight: bold;
-
-}
-/* main panels */
-.well {
-	background-image: none;
-	background-color: #FBC104;
-	border: none;
-	border-radius: 0px;
-	margin: 5px;
-	height: 98%;
-	width: 98%;
-	padding: 30px;
-}
-
-/* completed answer */
-.question {
-	background-color: #886a29;
-	color: #131313;
-	font-size: 50px;
-	font-family: Impact;
-}
-
-.unanswered {
-	background-color: #FBC104;
-	cursor: pointer;
-}
-
-.unanswered:hover {
-	background-color: #fbd864;
-}
-
-.unanswered:active {
-	background-color: #e0ad25;
-}
-
-.modal {
-	padding-left: 0px;
-}
-
-.modal-title {
-	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-	text-align: center;
-}
-
-.modal-content {
-	background-color: #F9C203;
-	color: #131313;
-	border-radius: 0px;
-	height: 100vh;
-	width: 100vw;
-	margin: 0 auto;
-}
-
-body {
-	height: 100vh;
-	width: 100vw;
-	background-color: #F9C203;
-	color: white;
-	line-height: 1;
-	margin: 0 auto;
-	padding: 0px 35px 0px 35px;
-}
-
-body div {
-	border-radius: 0px !important;
-}
-
-.panel {
-	border: 0px;
-	box-shadow: 0 1px 2px rgb(0 0 0 / 0%);
-}
-
-.panel-footer {
-	padding: 15px;
-	background-color: #F9C203;
-	color: white;
-	border: 0px;
-}
-
-.panel-default {
-	border: 0px !important;
-}
-
-#daily-double-modal .modal-footer {
-	text-align: center;
-}
-
-.no-border {
-	border: 0px !important;
-}
-
-#timer-grid {
-	display: block;
-	width: 512px;
-	height: 40px;
-	position: relative;
-	background-color: silver;
-	text-align: center;
-	margin: 0 auto;
-	padding: 5px;
-}
-
-.timer-square {
-	display: inline-block;
-	background-color: black;
-	border: 1px solid #000;
-	height: 30px;
-	width: 50px;
-	position: relative;
-}
-
-
 #game-load-modal-dialog {
+	opacity: 1 !important;
+	background-color: #F9C203;
 	width: 100%;
 	padding: 0px;
 	margin: 0px;
 }
 
+#game-load-modal {
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
 #question-modal {
 	width: 100vw;
 	height: 100vh;
-	padding: 0px !important;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 #question-modal-dialog {
@@ -195,10 +237,21 @@ body div {
 }
 
 #question-modal-content {
-	height: 100vh;
+	height: 100%;
 	border-radius: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
 }
 
+#question-modal-body {
+	height: 500px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
 .card-body {
 	margin-left: 10%;
 	margin-right: 10%;
@@ -206,12 +259,11 @@ body div {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	flex-direction: column;
 }
 
 #game-load-logo-img {
 	width: auto;
-	height: 450px;
+	height: 250px;
 }
 
 #end-round {
@@ -220,7 +272,7 @@ body div {
 
 .question-text, #answer-text {
 	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
-	font-size: 5vh;
+	font-size: 45px;
 	text-align: center;
 	color: #131313;
 	padding: 5%;
@@ -228,21 +280,22 @@ body div {
 
 .caption {
 	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
-	font-size: 2vw;
+	font-size: 25px;
 	padding: 5%;
 }
 
 /* #question-image {
 } */
 
-#question-image img, #final-image img{
+/* #question-image img, #final-image img{
 	padding: 10px;
 	max-height: 50vh;
-}
+} */
 
-video {
+
+video, iframe, #question-image img, #final-image img, #final-jeopardy-logo-img	{
 	padding: 10px;
-	max-height: 50vh;
+	height: 300px;
 }
 
 .file-select {
@@ -316,10 +369,7 @@ input::file-selector-button:active {
 #show-question-box {
 	padding: 50px;
 }
-#final-jeopardy-logo-img {
-	padding: 10px;
-	max-height: 50vh;
-}
+
 
 #final-jeopardy-question {
 	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
@@ -328,18 +378,37 @@ input::file-selector-button:active {
 	color: #131313;
 	padding: 5%;
 }
-#final-jeopardy-question-button{
+#final-jeopardy-question-button, #final-jeopardy-answer-button {
 	padding: 15px;
 }
-#final-jeopardy-question-button:hover {
+#final-jeopardy-question-button:hover, #final-jeopardy-answer-button:hover  {
 	color: white;
 	background-color: #252424 !important;
 }
 
-#final-jeopardy-question-button:active {
+#final-jeopardy-question-button:active, #final-jeopardy-answer-button:active  {
 	color: white;
 	background-color: #000000;
 }
-/* #question-text {
 
-} */
+.shake-img {
+	/* Start the shake animation and make the animation last for 0.5 seconds */
+	animation: shake 0.5s;
+  
+	/* When the animation is finished, start again */
+	animation-iteration-count: infinite;
+  }
+  
+  @keyframes shake {
+	0% { transform: translate(1px, 1px) rotate(0deg); }
+	10% { transform: translate(-1px, -2px) rotate(-1deg); }
+	20% { transform: translate(-3px, 0px) rotate(1deg); }
+	30% { transform: translate(3px, 2px) rotate(0deg); }
+	40% { transform: translate(1px, -1px) rotate(1deg); }
+	50% { transform: translate(-1px, 2px) rotate(-1deg); }
+	60% { transform: translate(-3px, 1px) rotate(0deg); }
+	70% { transform: translate(3px, 1px) rotate(-1deg); }
+	80% { transform: translate(-1px, -1px) rotate(1deg); }
+	90% { transform: translate(1px, 2px) rotate(0deg); }
+	100% { transform: translate(1px, -2px) rotate(-1deg); }
+  }
