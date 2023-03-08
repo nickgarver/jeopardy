@@ -66,6 +66,7 @@
         <div class="modal-body card-body" id="question-modal-body">
           <div id="question-media" class="text-center"></div>
           <p id="question" class="question-text text-center"></p>
+          <div id="answer-media" class="text-center"></div>
           <div id="answer-text" class="text-center"></div>
         </div>
 
@@ -90,11 +91,11 @@
           <img src="./images/jeopardy_logo.jpg" id="game-load-logo-img">
         </div>
         <div class="modal-body text-center" id="game-load-input-div">
-          <div class="file-select">
+          <div id="file-select" class="file-select">
             <input type="file" id="input-file" accept="application/JSON">
           </div>
           <div class="file-btn">
-            <button type="button" id="game-load-input-button">Load Game</button>
+            <button type="button" id="game-load-input-button" hidden>Load Game</button>
           </div>
         </div>
         <div class="modal-footer no-border">

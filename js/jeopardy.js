@@ -28,6 +28,7 @@ $(function(){
         }
         else if (currentRound >= rounds.length - 1) {
             $(this).text('New Game');
+            $(this).hide();
         }
         currentBoard = jsonData[rounds[currentRound]];
         $('.panel-heading').empty();
@@ -39,15 +40,16 @@ $(function(){
         $('.unanswered').removeClass('unanswered').unbind().css('cursor','not-allowed');
     });
     $('#question-modal').on('show.bs.modal', function (e) {
-        console.log('modal show');
     });
     $('#question-modal').on('hidden.bs.modal', function (e) {
-        console.log('modal close');
         $('#question-media').show();
         $('#question').show();
     });
     $('#input-file').click(function(){
         $('#game-title').removeClass("blink");
+    });
+    $("#input-file").change(function(){
+        $('#game-load-input-button').show();
     });
     
     $(document).on('click', '.unanswered', function(){
@@ -57,41 +59,28 @@ $(function(){
         var answer = currentBoard[category].questions[question].answer;
         var value = currentBoard[category].questions[question].value;
         var questionMedia = currentBoard[category].questions[question].media;
+        var answerMedia = currentBoard[category].questions[question].answerMedia;
         var isDailyDouble = 'daily-double' in currentBoard[category].questions[question] ?
             currentBoard[category].questions[question]['daily-double'] : false;
 
         if (isDailyDouble) { 
             $('#daily-double-modal').modal('show');
         }
-
+        
         $('#modal-answer-title').empty().text(currentBoard[category].name + ' - ' + value);
         $('#question').empty().text(currentBoard[category].questions[question].question);
         if (questionMedia){
-            if (questionMedia.startsWith("http")) {
-                console.log('web link');
-                // srcPrefix = ''
-                $('#question-media').empty().append(`<iframe src=" ` + questionMedia.replace("watch?v=", "embed/") + `"> </iframe>`).show();
-            } else if(questionMedia.endsWith(".mp4")) {
-                console.log('video');
-                srcPrefix = './'
-                $('#question-media').empty().append("<video src=" + srcPrefix + questionMedia + ` "type="video/mp4" controls> </video>"`).show();
-
-            } else if(questionMedia.endsWith(".png")) {
-                console.log('image');
-                srcPrefix = './'
-                $('#question-media').empty().append("<img src=" + srcPrefix + questionMedia + ">").show();
-            } else {
-                srcPrefix = './'
-            }
-
+            loadMedia(questionMedia, '#question-media')
             $('#question').addClass("caption");
         }
         else {
             $('#question-media').empty().hide();
         }
         $('#answer-text').text(answer).hide();
+        $('#answer-media').hide();
         $('#question-modal').modal('show');
         $('#answer-close-button').data('question', question).data('category', category);
+        $('#answer-show-button').data('media', answerMedia);
         $('#answer-show-button').show();
         handleAnswer();
     });
@@ -100,11 +89,22 @@ $(function(){
         $('#final-jeopardy-question').show();
         $('#final-image').show();
         $('#final-jeopardy-logo-img').hide();
+        $('#show-question-box').hide();
         $('#final-jeopardy-answer-button').show();
     });
     $(document).on('click', '#final-jeopardy-answer-button',function(){
         $(this).hide();
+        finalquestionAnswer = currentBoard['answerMedia'];
+        if (finalquestionAnswer){
+            loadMedia(finalquestionAnswer, '#final-image')
+            $('#final-jeopardy-question').addClass("caption");
+        }
+        else {
+            $('#final-jeopardy-question').removeClass("caption");
+            $('#final-image').hide();
+        }        
         $('#final-jeopardy-question').text(currentBoard['answer']);
+        $('#next-round').show();
     });
     $(document).on('click', '#daily-double-wager',function(){
         $('#daily-double-modal').modal('hide');
@@ -120,26 +120,22 @@ function loadBoard() {
     //function that turns the board.json (loaded in the the currentBoard variable) into a jeopardy board
     var board = $('#main-board');
     if (rounds[currentRound] === "final-jeopardy") {
-        finalquestionMedia = currentBoard['image'];
+        finalquestionMedia = currentBoard['media'];
         $('#end-round').hide();
-        $('#main-board-categories').append('<div class="text-center  col-md-6 col-md-offset-3"><h2 class="category-text">' +
+        $('#main-board-categories').append('<div class="text-center"><h2 class="category-text">' +
             currentBoard['category'] + '</h2></div>').css('background-color', '#F9C203');
         finalImage = '<div id="final-image" class="text-center"></div>';
-        board.append('<div class="text-center final-panel col-md-6 col-md-offset-3"><h2><img src="./images/final-jeopardy-img.jpg" id="final-jeopardy-logo-img"></h2>'+
+        board.append('<div class="text-center final-panel"><h2><img class="shake-img" src="./images/final-jeopardy-img.jpg" id="final-jeopardy-logo-img"></h2>'+
         	finalImage + '<h2 id="final-jeopardy-question" class="question-text">' +
             currentBoard['question'] + '</h2><div id="show-question-box"><button class="btn" id="final-jeopardy-question-button">Show Question</button></div>' +
             '<button class="btn" id="final-jeopardy-answer-button">Show Final Answer</button>');
             $('#main-board').css('background-color', '#F9C203');
             $('#final-jeopardy-question').hide();
         $('#final-jeopardy-answer-button').hide();
-        if (finalquestionMedia){
-            if (finalquestionMedia.startsWith("http") || finalquestionMedia.startsWith("data")) {
-                srcPrefix = ''
-            }
-            else {
-                srcPrefix = './'
-            }
-           $('#final-image').empty().append("<img src=" + srcPrefix + finalquestionMedia + ">").hide();
+        if (finalquestionMedia){ 
+            loadMedia(finalquestionMedia,'#final-image')
+            $('#final-jeopardy-question').addClass("caption");
+            $('#final-image').hide();
         }
         else {
             $('#final-image').empty().hide();
@@ -190,17 +186,50 @@ function loadBoard() {
 
 function handleAnswer(){
     $('#answer-show-button').click(function(){
+        var answerMedia = $('#answer-show-button').data('media');
         $(this).hide();
         $('#question-media').hide();
         $('#question').hide();
+        if (answerMedia){
+            loadMedia(answerMedia,'#answer-media')
+            $('#answer-media').show()
+            $('#answer-text').addClass("caption");
+        } else {
+            $('#answer-media').hide()
+        }
         $('#answer-text').show();
     });
+
     $('#answer-close-button').click(function(){
         var tile = $('div[data-category="' + $(this).data('category') + '"]>[data-question="' +
             $(this).data('question') + '"]')[0];
         $(tile).empty().append('&nbsp;<div class="clearfix"></div>').removeClass('unanswered').unbind().css('cursor','not-allowed');
         $('#question').removeClass("caption");
+        $('#answer-media').hide()
+        $('#answer-show-button').data('media', null);
+        $('#answer-text').removeClass("caption");
         $('#question-modal').modal('hide');
     });
 }
 
+function loadMedia(media, elementID){
+    if (media.startsWith("http")) {
+        // srcPrefix = ''
+        $(elementID).empty().append(`<iframe frameborder="0"
+            scrolling="no" 
+            style="overflow:hidden;
+            height:100%;width:100%"
+            height="100%" 
+            width="100%" 
+            src=" ` + media.replace("watch?v=", "embed/") + `"> </iframe>`).show();
+    } else if(media.endsWith(".mp4")) {
+        srcPrefix = './'
+        $(elementID).empty().append("<video src=" + srcPrefix + media + ` 
+        "type="video/mp4" controls> </video>"`).show();
+    } else if(media.endsWith(".png")) {
+        srcPrefix = './'
+        $(elementID).empty().append("<img src=" + srcPrefix + media + ">").show();
+    } else {
+        srcPrefix = './'
+    }
+}

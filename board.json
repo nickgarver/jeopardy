@@ -20,7 +20,8 @@
                     "value":3,
                     "question":"ROBOTS B.O.B. AND V.I.N.C.E.N.T. PROVIDED SOME COMIC RELIEF IN THIS DARK 1979 DISNEY SCI-FI FILM",
                     "answer": "What is The Black Hole?",
-                    "media": "https://www.youtube.com/embed/x6vCYN9DA_Q"
+                    "media": "https://www.youtube.com/embed/x6vCYN9DA_Q",
+                    "answerMedia": "https://www.youtube.com/watch?v=oBhuP8KhqUA"
                 },
                 {
                     "value":4,
@@ -52,7 +53,8 @@
                 {
                     "value":3,
                    "question":"ESPORTSCASTER AND MACHINIMA PERSONALITY RYAN WYATT IS BEST KNOWN BY THIS SHORT NICKNAME",
-                    "answer": "What is Fwiz?"
+                    "answer": "What is Fwiz?",
+                    "answerMedia": "images/kanye_video.mp4"
                 },
                 {
                     "value":4,
@@ -376,7 +378,9 @@
     ],
     "final-jeopardy":{
         "category": "MARVEL MOVIES",
+        "media": "https://www.youtube.com/watch?v=eVrGfM4qFkQ",
         "question": "IT WAS THE FIRST FEATURE-LENGTH MARVEL FILM RELEASED IN THEATERS",
-        "answer": "What is Howard the Duck?"
+        "answer": "What is Howard the Duck?",
+        "answerMedia": "https://www.youtube.com/watch?v=oBhuP8KhqUA"
     }
 }

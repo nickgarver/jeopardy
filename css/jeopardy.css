@@ -1,12 +1,43 @@
+@font-face {
+    font-family: LT-Demi;
+    src: url("/fonts/LT-Demi.ttf") format("truetype");
+}
+@font-face {
+    font-family: Impact-Reg;
+    src: url("/fonts/Impact-Reg.ttf") format("truetype");
+}
+@font-face {
+    font-family: Korinna;
+    src: url("/fonts/Korinna.otf") format("opentype");
+}
+@font-face {
+    font-family: Korinna-Bold;
+    src: url("/fonts/Korinna-Bold.otf") format("opentype");
+}
+
+:root {
+	--hivemind-reg: #F9C203;
+	--hivemind-light: #fbd864;
+	--hivemind-dark: #e0ad25;
+	--question-font: Korinna-Bold;
+	--card-font: Impact-Reg;
+	--title-font: LT-Demi;
+	--black-reg: #131313;
+	--black-light: #252424;
+	--black-dark: #000000;
+	--white-reg: #fefefe;
+  }
+
 html {
-	background-color: #F9C203;
+	background-color: var(--hivemind-reg);
+	background-color: chocolate;
 }
 body {
 	height: 100vh;
 	max-width: 1080px;
 	width: 100vw;
-	background-color: #F9C203;
-	color: white;
+	background-color: var(--hivemind-reg);
+	color: var(--black-reg);
 	line-height: 1;
 	margin: 0 auto;
 	padding: 0px 35px 0px 35px;
@@ -30,11 +61,8 @@ body div {
 
 #main-board {
 	background-image: none;
-	/* background-color: red !important; */
-	/* padding: 0px 5px 0px 0px; */
 	padding: 5px;
 	display: flex;
-	/* margin-top: -15px; */
 	height: auto;
 	align-items: center;
     justify-content: center;
@@ -42,11 +70,9 @@ body div {
 
 #main-board-categories{
 	background-image: none;
-	background-color: black;
 	padding: 5px;
 	border: none;
-	color: white;
-	/* padding: 5px 5px 0px 0px; */
+	color: var(--white-reg);
 	display: flex;
 	height: auto;
 	align-items: center;
@@ -73,15 +99,12 @@ body div {
 	vertical-align: middle;
 	position: relative;
 	height: auto !important;
-	/* background-color: blanchedalmond; */
 }
 
 .category-text {
-	color: #131313;
+	color: var(--black-reg);
 	font-size: 24px;
-	font-family: Impact;
-	font-weight: bold;
-
+	font-family: var(--title-font);
 }
 /* main panels */
 .well {
@@ -92,7 +115,7 @@ body div {
 	margin: 1px;
 	height: 100px;
 	width: 98%;
-	padding: 10px;
+	padding: 0px;
 	display: flex;
 	align-items: center;
     justify-content: center;
@@ -101,42 +124,42 @@ body div {
 /* completed answer */
 .question {
 	background-color: #886a29;
-	color: #131313;
+	color: var(--black-reg);
 	font-size: 50px;
-	font-family: Impact;
+	font-family: var(--card-font);
 }
 
 .unanswered {
-	background-color: #FBC104;
+	background-color: var(--hivemind-reg);
 	cursor: pointer;
 }
 
 .unanswered:hover {
-	background-color: #fbd864;
+	background-color: var(--hivemind-light);
 }
 
 .unanswered:active {
-	background-color: #e0ad25;
+	background-color: var(--hivemind-dark);
 }
 
 .modal {
 	padding-left: 0px;
-	/* background-color: chocolate; */
 }
 
 .modal-title {
-	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+	font-family: LT-Demi;
 	text-align: center;
 }
 
 .modal-content {
-	background-color: #F9C203;
-	color: #131313;
+	background-color: var(--hivemind-reg);
+	color: var(--black-reg);
 	border-radius: 0px;
 	margin: 0 auto;
 	box-shadow: none;
 	border: 0px;
-	height: 800px !important;
+	max-height: 830px !important;
+	height: 100vh !important;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -150,26 +173,25 @@ body div {
 
 .panel-footer {
 	padding: 15px;
-	background-color: #F9C203;
-	color: white;
+	background-color: var(--hivemind-reg);
+	color: var(--white-reg);
 	border: 0px;
 }
 
 .panel-default {
 	border: 0px !important;
+	margin: 0px !important;
 }
 
 #daily-double-modal {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	/* flex-direction: column; */
 }
 
 #daily-double-content {
-	padding: 175px;
-	background-color: #F9C203;
-	/* overflow: hidden; */
+	padding: 150px;
+	background-color: var(--hivemind-reg);
 }
 
 .modal-footer {
@@ -180,44 +202,19 @@ body div {
 	border: 0px !important;
 }
 
-button {
-	background-color: #131313;
-	color: white;
-	font-family: impact;
-	padding: 15px;
-	margin: 5px;
-	border-radius: 5px;
-	border: 0px;
-}
-
-button:hover {
-	background-color: #252424 !important;
-}
-
-button:active {
-	background-color: #000000;
-}
-
-.score-button-group {
-	text-align: center;
-}
-
-.control-button-group {
-	text-align: center;
-	height: 15px
-}
-
 #game-load-modal-dialog {
 	opacity: 1 !important;
-	background-color: #F9C203;
+	background-color: var(--hivemind-reg);
 	width: 100%;
-	padding: 0px;
+	max-width: 1080px;
+	padding: 0px !important;
 	margin: 0px;
 }
 
 #game-load-modal {
 	width: 100vw;
 	height: 100vh;
+	padding: 0px !important;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -225,6 +222,9 @@ button:active {
 
 #question-modal {
 	width: 100vw;
+	max-width: 1080px;
+	padding: 0px !important;
+	margin: 0 auto;
 	height: 100vh;
 	display: flex;
 	align-items: center;
@@ -270,31 +270,45 @@ button:active {
 	margin-right: 10px;
 }
 
-.question-text, #answer-text {
-	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+.question-text, #answer-text, #final-jeopardy-question {
+	font-family: var(--question-font);
+	text-shadow: 2px 2px 2px var(--white-reg);
 	font-size: 45px;
+	width: 25ch;
 	text-align: center;
-	color: #131313;
+	color: var(--black-reg);
 	padding: 5%;
 }
 
 .caption {
-	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
-	font-size: 25px;
-	padding: 5%;
+	font-family: var(--question-font) !important;
+	font-size: 25px !important;
+	width: 35ch !important;
+	padding: 5% !important;
 }
 
-/* #question-image {
-} */
+#final-image, #question-media, #answer-media {
+    position: relative;
+    height: 0;
+    width: 100%;
+    padding-bottom:56.25%;
+}
 
-/* #question-image img, #final-image img{
-	padding: 10px;
-	max-height: 50vh;
-} */
+video, iframe {
+	/* padding: 10px; */
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: auto;
+	width: 100%;
+	border: none;
+}
 
+#question-media img, #final-image img {
+	height: 300px;
+}
 
-video, iframe, #question-image img, #final-image img, #final-jeopardy-logo-img	{
-	padding: 10px;
+#final-jeopardy-logo-img{
 	height: 300px;
 }
 
@@ -304,33 +318,82 @@ video, iframe, #question-image img, #final-image img, #final-jeopardy-logo-img	{
 	padding: 5px 5px 5px 80px;
 	margin: 0 auto;
 	text-align: center;
-	/* background-color: wheat; */
 }
+
+
+/* BUTTONS */
+
+button {
+	background-color: var(--black-reg);
+	color: var(--white-reg);
+	font-family: var(--card-font);
+	padding: 15px;
+	margin: 5px;
+	border-radius: 5px;
+	border: 0px;
+}
+
+button:hover {
+	background-color: var(--black-light) !important;
+}
+
+button:active {
+	background-color: var(--black-dark) !important;
+}
+
+.score-button-group {
+	text-align: center;
+}
+
+.control-button-group {
+	text-align: center;
+	height: 15px
+}
+
 
 .file-btn {
 	width: 250px;
 	height: auto;
 	padding: 10px;
 	margin: 0 auto;
+	display: flex !important;
+	align-items: center;
+	justify-content: center;
 }
+
+#final-jeopardy-question-button, #final-jeopardy-answer-button {
+	padding: 15px;
+}
+#final-jeopardy-question-button:hover, #final-jeopardy-answer-button:hover  {
+	color: var(--white-reg);
+	background-color: var(--black-light) !important;
+}
+
+#final-jeopardy-question-button:active, #final-jeopardy-answer-button:active  {
+	color: var(--white-reg);
+	background-color: var(--black-dark) !important;
+}
+
 
 input::file-selector-button {
 	background-color: rgba(0,0,0,0);
-	color: #131313;
-	font-family: impact;
+	color: var(--black-reg);
+	font-family: var(--card-font);
 	padding: 5px;
 	margin: 5px;
 	border-radius: 5px;
-	border: 3px solid #131313;
+	border: 3px solid var(--black-reg);
 }
 
 input::file-selector-button:hover {
-	background-color: #fbd864 !important;
+	background-color: var(--hivemind-light);
 }
 
 input::file-selector-button:active {
-	background-color: #e0ad25;
+	background-color: var(--hivemind-dark);
 }
+
+/* END */
 
 .fade-scale {
 	transform: scale(0);
@@ -357,9 +420,9 @@ input::file-selector-button:active {
 
 
 .final-panel {
-	height: 75vh;
+	height: 500px;
 	padding: 10px;
-	background-color: #F9C203;
+	background-color: var(--hivemind-reg);
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -368,27 +431,6 @@ input::file-selector-button:active {
 
 #show-question-box {
 	padding: 50px;
-}
-
-
-#final-jeopardy-question {
-	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
-	font-size: 5vh;
-	text-align: center;
-	color: #131313;
-	padding: 5%;
-}
-#final-jeopardy-question-button, #final-jeopardy-answer-button {
-	padding: 15px;
-}
-#final-jeopardy-question-button:hover, #final-jeopardy-answer-button:hover  {
-	color: white;
-	background-color: #252424 !important;
-}
-
-#final-jeopardy-question-button:active, #final-jeopardy-answer-button:active  {
-	color: white;
-	background-color: #000000;
 }
 
 .shake-img {
