@@ -16,21 +16,27 @@
 }
 
 :root {
-	--hivemind-reg: #F9C203;
-	--hivemind-light: #fbd864;
-	--hivemind-dark: #e0ad25;
-	--question-font: Korinna-Bold;
+	--hivemind-reg: #3286F8;
+	--hivemind-light: #589dff;
+	--hivemind-dark: #1172f9;
+	--disabled-card: #3966a6;
+	--question-font: LT-Demi;
 	--card-font: Impact-Reg;
 	--title-font: LT-Demi;
 	--black-reg: #131313;
 	--black-light: #252424;
 	--black-dark: #000000;
-	--white-reg: #fefefe;
+	--white-text: #fefefe;
+	--white-reg: #F3F6EA;
+	--white-light: #ffffff;
+	--white-dark: #fefefe;
+	--weird-bg: #39364f;
+
   }
 
 html {
 	background-color: var(--hivemind-reg);
-	background-color: chocolate;
+	background-color: var(--weird-bg);
 }
 body {
 	height: 100vh;
@@ -66,13 +72,15 @@ body div {
 	height: auto;
 	align-items: center;
     justify-content: center;
+	/* background-color: var(--black-dark); */
 }
 
 #main-board-categories{
 	background-image: none;
+	/* background-color: var(--black-dark); */
 	padding: 5px;
 	border: none;
-	color: var(--white-reg);
+	color: var(--white-text);
 	display: flex;
 	height: auto;
 	align-items: center;
@@ -102,17 +110,17 @@ body div {
 }
 
 .category-text {
-	color: var(--black-reg);
+	/* color: var(--white-text); */
 	font-size: 24px;
 	font-family: var(--title-font);
 }
 /* main panels */
 .well {
 	background-image: none;
-	background-color: #FBC104;
+	background-color: var(--hivemind-reg);
 	border: none;
 	border-radius: 0px;
-	margin: 1px;
+	margin: 1.5px;
 	height: 100px;
 	width: 98%;
 	padding: 0px;
@@ -123,8 +131,8 @@ body div {
 
 /* completed answer */
 .question {
-	background-color: #886a29;
-	color: var(--black-reg);
+	background-color: var(--disabled-card);
+	color: var(--white-text);
 	font-size: 50px;
 	font-family: var(--card-font);
 }
@@ -147,6 +155,9 @@ body div {
 }
 
 .modal-title {
+	color: var(--white-text);
+	text-shadow: 2px 2px 2px var(--black-dark);
+	font-size: 25px;
 	font-family: LT-Demi;
 	text-align: center;
 }
@@ -174,7 +185,7 @@ body div {
 .panel-footer {
 	padding: 15px;
 	background-color: var(--hivemind-reg);
-	color: var(--white-reg);
+	color: var(--white-text);
 	border: 0px;
 }
 
@@ -272,11 +283,11 @@ body div {
 
 .question-text, #answer-text, #final-jeopardy-question {
 	font-family: var(--question-font);
-	text-shadow: 2px 2px 2px var(--white-reg);
+	text-shadow: 2px 2px 2px var(--black-dark);
 	font-size: 45px;
 	width: 25ch;
 	text-align: center;
-	color: var(--black-reg);
+	color: var(--white-text);
 	padding: 5%;
 }
 
@@ -312,33 +323,27 @@ video, iframe {
 	height: 300px;
 }
 
-.file-select {
-	width: 250px;
-	height: 50px;
-	padding: 5px 5px 5px 80px;
-	margin: 0 auto;
-	text-align: center;
-}
-
-
 /* BUTTONS */
 
 button {
-	background-color: var(--black-reg);
-	color: var(--white-reg);
+	background-color: var(--white-reg);
+	color: var(--black-reg);
 	font-family: var(--card-font);
-	padding: 15px;
+	padding: 15px 25px 15px 25px;
 	margin: 5px;
-	border-radius: 5px;
+	border-radius: 15px;
 	border: 0px;
+	transition: 0.2s;
+	box-shadow: 0 0px 0px rgba(0,0,0,0.25), 0 0px 0px rgba(0,0,0,0.22);
 }
 
 button:hover {
-	background-color: var(--black-light) !important;
+	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+	background-color: var(--white-light) !important;
 }
 
 button:active {
-	background-color: var(--black-dark) !important;
+	background-color: var(--white-dark) !important;
 }
 
 .score-button-group {
@@ -362,36 +367,59 @@ button:active {
 }
 
 #final-jeopardy-question-button, #final-jeopardy-answer-button {
-	padding: 15px;
+	background-color: var(--white-reg);
+	color: var(--black-reg);
+	font-family: var(--card-font);
+	padding: 15px 25px 15px 25px;
+	margin: 5px;
+	border-radius: 15px;
+	border: 0px;
+	transition: 0.2s;
+	box-shadow: 0 0px 0px rgba(0,0,0,0.25), 0 0px 0px rgba(0,0,0,0.22);
+	outline-color: var(--white-dark);
 }
 #final-jeopardy-question-button:hover, #final-jeopardy-answer-button:hover  {
-	color: var(--white-reg);
-	background-color: var(--black-light) !important;
+	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+	background-color: var(--white-light);
+	border: 0px;
 }
 
 #final-jeopardy-question-button:active, #final-jeopardy-answer-button:active  {
-	color: var(--white-reg);
-	background-color: var(--black-dark) !important;
+	background-color: var(--white-dark);
+	border: 0px;
 }
 
 
 input::file-selector-button {
-	background-color: rgba(0,0,0,0);
-	color: var(--black-reg);
+	background-color: var(--black-reg);
+	color: var(--white-reg);
 	font-family: var(--card-font);
-	padding: 5px;
+	padding: 5px 15px 5px 15px;
 	margin: 5px;
-	border-radius: 5px;
-	border: 3px solid var(--black-reg);
+	border: 2px solid var(--white-reg);
+	border-radius: 15px;
+	transition: 0.2s;
 }
 
 input::file-selector-button:hover {
-	background-color: var(--hivemind-light);
+	background-color: var(--black-light);
 }
 
 input::file-selector-button:active {
-	background-color: var(--hivemind-dark);
+	background-color: var(--black-dark);
 }
+
+.file-select {
+	color: var(--white-reg);
+	font-family: var(--card-font);
+	/* width: 250px;
+	height: 50px; */
+	padding: 5px 5px 5px 80px;
+	/* margin: 0 auto;
+	text-align: center; */
+	/* background-color: red; */
+}
+
 
 /* END */
 
@@ -420,7 +448,7 @@ input::file-selector-button:active {
 
 
 .final-panel {
-	height: 500px;
+	height: 550px;
 	padding: 10px;
 	background-color: var(--hivemind-reg);
 	display: flex;

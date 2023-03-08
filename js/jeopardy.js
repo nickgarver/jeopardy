@@ -123,13 +123,13 @@ function loadBoard() {
         finalquestionMedia = currentBoard['media'];
         $('#end-round').hide();
         $('#main-board-categories').append('<div class="text-center"><h2 class="category-text">' +
-            currentBoard['category'] + '</h2></div>').css('background-color', '#F9C203');
+            currentBoard['category'] + '</h2></div>').css('background-color', 'var(--hivemind-reg)');
+            board.css('background-color', 'var(--hivemind-reg)');
         finalImage = '<div id="final-image" class="text-center"></div>';
         board.append('<div class="text-center final-panel"><h2><img class="shake-img" src="./images/final-jeopardy-img.jpg" id="final-jeopardy-logo-img"></h2>'+
         	finalImage + '<h2 id="final-jeopardy-question" class="question-text">' +
             currentBoard['question'] + '</h2><div id="show-question-box"><button class="btn" id="final-jeopardy-question-button">Show Question</button></div>' +
             '<button class="btn" id="final-jeopardy-answer-button">Show Final Answer</button>');
-            $('#main-board').css('background-color', '#F9C203');
             $('#final-jeopardy-question').hide();
         $('#final-jeopardy-answer-button').hide();
         if (finalquestionMedia){ 
@@ -143,7 +143,7 @@ function loadBoard() {
     }
     else {
         $('#end-round').show();
-        board.css('background-color', 'black');
+        board.css('background-color', 'var(--black-dark)');
         var columns = currentBoard.length;
 
         // Floor of width/12, for Bootstrap column width appropriate for the number of categories
@@ -156,7 +156,7 @@ function loadBoard() {
             }
             $('#main-board-categories').append('<div class="category ' + header_class
                 + '"><div class="text-center well"><div class="category-title category-text text-center">' + category.name
-                 + '</div></div><div class="clearfix"></div></div>').css('background-color', 'black');
+                 + '</div></div><div class="clearfix"></div></div>').css('background-color', 'var(--black-dark)');
 
             // Column
             var div_class = 'category col-md-' + column_width;
@@ -185,30 +185,25 @@ function loadBoard() {
 }
 
 function handleAnswer(){
-    $('#answer-show-button').click(function(){
-        var answerMedia = $('#answer-show-button').data('media');
-        $(this).hide();
-        $('#question-media').hide();
-        $('#question').hide();
-        if (answerMedia){
-            loadMedia(answerMedia,'#answer-media')
-            $('#answer-media').show()
-            $('#answer-text').addClass("caption");
-        } else {
-            $('#answer-media').hide()
+    document.addEventListener('keyup', handleKey);
+
+    function handleKey(e){
+        if(e.key == 'z') {
+            answerShow();
         }
-        $('#answer-text').show();
+        if(e.key == 'x') {
+            answerClose();
+            document.removeEventListener('keyup', handleKey);
+        }
+    }
+
+    $('#answer-show-button').click(function(){
+        answerShow();
     });
 
     $('#answer-close-button').click(function(){
-        var tile = $('div[data-category="' + $(this).data('category') + '"]>[data-question="' +
-            $(this).data('question') + '"]')[0];
-        $(tile).empty().append('&nbsp;<div class="clearfix"></div>').removeClass('unanswered').unbind().css('cursor','not-allowed');
-        $('#question').removeClass("caption");
-        $('#answer-media').hide()
-        $('#answer-show-button').data('media', null);
-        $('#answer-text').removeClass("caption");
-        $('#question-modal').modal('hide');
+        answerClose();
+        document.removeEventListener('keyup', handleKey);
     });
 }
 
@@ -232,4 +227,31 @@ function loadMedia(media, elementID){
     } else {
         srcPrefix = './'
     }
+}
+
+function answerShow(){
+    var answerMedia = $('#answer-show-button').data('media');
+    $('#answer-show-button').hide();
+    $('#question-media').hide();
+    $('#question').hide();
+    if (answerMedia){
+        loadMedia(answerMedia,'#answer-media')
+        $('#answer-media').show()
+        $('#answer-text').addClass("caption");
+    } else {
+        $('#answer-media').hide()
+    }
+    $('#answer-text').show();
+}
+
+
+function answerClose(){
+    var tile = $('div[data-category="' + $('#answer-close-button').data('category') + '"]>[data-question="' +
+    $('#answer-close-button').data('question') + '"]')[0];
+    $(tile).empty().append('&nbsp;<div class="clearfix"></div>').removeClass('unanswered').unbind().css('cursor','not-allowed');
+    $('#question').removeClass("caption");
+    $('#answer-media').hide()
+    $('#answer-show-button').data('media', null);
+    $('#answer-text').removeClass("caption");
+    $('#question-modal').modal('hide');
 }

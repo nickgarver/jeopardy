@@ -42,17 +42,17 @@
             "questions":[
                 {
                     "value":1,
-                   "question":"MINECRAFT CREATOR MARKUS PERSSON IS BETTER KNOWN BY THIS MONOSYLLABIC NICKNAME",
+                    "question":"MINECRAFT CREATOR MARKUS PERSSON IS BETTER KNOWN BY THIS MONOSYLLABIC NICKNAME",
                     "answer": "What is Notch?"
                 },
                 {
                     "value":2,
-                   "question":"IT'S THE ALTER EGO OF PENNY ARCADE'S MIKE KRAHULIK - AND THE NAME OF MIKE'S SON",
+                    "question":"IT'S THE ALTER EGO OF PENNY ARCADE'S MIKE KRAHULIK - AND THE NAME OF MIKE'S SON",
                     "answer": "What is Gabe?"
                 },
                 {
                     "value":3,
-                   "question":"ESPORTSCASTER AND MACHINIMA PERSONALITY RYAN WYATT IS BEST KNOWN BY THIS SHORT NICKNAME",
+                    "question":"ESPORTSCASTER AND MACHINIMA PERSONALITY RYAN WYATT IS BEST KNOWN BY THIS SHORT NICKNAME",
                     "answer": "What is Fwiz?",
                     "answerMedia": "images/kanye_video.mp4"
                 },
