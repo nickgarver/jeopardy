@@ -43,8 +43,8 @@ body {
 	height: 100vh;
 	max-width: 1080px;
 	width: 100vw;
-	/* background-color: var(--hivemind-reg); */
-	background-color: red;
+	background-color: var(--hivemind-reg);
+	/* background-color: red; */
 	color: var(--black-reg);
 	line-height: 1;
 	margin: 0 auto;
