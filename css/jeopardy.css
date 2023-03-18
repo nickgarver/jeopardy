@@ -1,18 +1,18 @@
 @font-face {
     font-family: LT-Demi;
-    src: url("/fonts/LT-Demi.ttf") format("truetype");
+    src: url("../fonts/LT-Demi.ttf") format("truetype");
 }
 @font-face {
     font-family: Impact-Reg;
-    src: url("/fonts/Impact-Reg.ttf") format("truetype");
+    src: url("../fonts/Impact-Reg.ttf") format("truetype");
 }
 @font-face {
     font-family: Korinna;
-    src: url("/fonts/Korinna.otf") format("opentype");
+    src: url("../fonts/Korinna.otf") format("opentype");
 }
 @font-face {
     font-family: Korinna-Bold;
-    src: url("/fonts/Korinna-Bold.otf") format("opentype");
+    src: url("../fonts/Korinna-Bold.otf") format("opentype");
 }
 
 :root {
@@ -39,10 +39,12 @@ html {
 	background-color: var(--weird-bg);
 }
 body {
+	/* transform: scale(.8); */
 	height: 100vh;
 	max-width: 1080px;
 	width: 100vw;
-	background-color: var(--hivemind-reg);
+	/* background-color: var(--hivemind-reg); */
+	background-color: red;
 	color: var(--black-reg);
 	line-height: 1;
 	margin: 0 auto;

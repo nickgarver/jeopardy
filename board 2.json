@@ -1,0 +1,199 @@
+{
+    "jeopardy":[
+        {
+            "name":"ROBOTS",
+            "questions":[
+                {
+                    "value":1,
+                    "question":"transformer",
+                    "media":"images/flash.png",
+                    "answer": "Who is Optimus Prime?",
+                    "daily-double": true
+                },
+                {
+                    "value":2,
+                    "question":"THIS ROBOT BOUNTY HUNTER WAS HIRED TO FIND THE MILLENNIUM FALCON IN THE EMPIRE STRIKES BACK",
+                    "media":"images/kanye_video.mp4",
+                    "answer": "Who is IG-88 or 4-LOM?"
+                },
+                {
+                    "value":3,
+                    "question":"ROBOTS B.O.B. AND V.I.N.C.E.N.T. PROVIDED SOME COMIC RELIEF IN THIS DARK 1979 DISNEY SCI-FI FILM",
+                    "answer": "What is The Black Hole?",
+                    "media": "https://www.youtube.com/embed/x6vCYN9DA_Q",
+                    "answerMedia": "https://www.youtube.com/watch?v=oBhuP8KhqUA"
+                },
+                {
+                    "value":4,
+                    "question":"CHRIS JERICHO HOSTED THIS AUTOMATON FIGHTING COMPETITION ON SYFY IN EARLY 2013",
+                    "answer": "What is Robot Combat League?",
+                    "daily-double": true,
+                    "media": "https://www.youtube.com/watch?v=oBhuP8KhqUA"
+                },
+                {
+                    "value": 5,
+                    "question": "HE'S THE ROBOT WHO GETS ELECTROCUTED AND COMES TO LIFE IN 1986'S SHORT CIRCUIT",
+                    "answer": "Who is Johnny 5/Number 5?"
+                }
+            ]
+        },
+        {
+            "name":"NICKNAMES",
+            "questions":[
+                {
+                    "value":1,
+                    "question":"MINECRAFT CREATOR MARKUS PERSSON IS BETTER KNOWN BY THIS MONOSYLLABIC NICKNAME",
+                    "answer": "What is Notch?"
+                },
+                {
+                    "value":2,
+                    "question":"IT'S THE ALTER EGO OF PENNY ARCADE'S MIKE KRAHULIK - AND THE NAME OF MIKE'S SON",
+                    "answer": "What is Gabe?"
+                },
+                {
+                    "value":3,
+                    "question":"ESPORTSCASTER AND MACHINIMA PERSONALITY RYAN WYATT IS BEST KNOWN BY THIS SHORT NICKNAME",
+                    "answer": "What is Fwiz?",
+                    "answerMedia": "images/kanye_video.mp4"
+                },
+                {
+                    "value":4,
+                   "question":"IN ADDITION TO \"CLIFFYB\", CLIFF BLESZINSKI IS SOMETIMES KNOWN BY THIS LARGE NICKNAME, BRO",
+                    "answer": "What is Dude Huge?"
+                },
+                {
+                    "value": 5,
+                    "question": "LARRY HRYB BORROWED HIS GAMERTAG, \"MAJOR NELSON\", FROM THIS 1960S SITCOM",
+                    "answer": "What is I Dream of Jeannie?"
+                }
+            ]
+        },
+        {
+            "name":"FAMOUS FIRST WORDS",
+            "questions":[
+                {
+                    "value":1,
+                   "question":"\"BITE MY SHINY METAL ASS\"",
+                    "answer": "Who is Bender?"
+                },
+                {
+                    "value":2,
+                   "question":"\"WHY, YOU SLIMY, DOUBLE-CROSSING, NO-GOOD SWINDLER. YOU GOT A LOT OF GUTS COMING HERE, AFTER WHATYOU PULLED\"",
+                    "answer": "Who is Lando Calrissian?"
+                },
+                {
+                    "value":3,
+                   "question":"\"LISTEN TO MY STORY. THIS MAY BE OUR LAST CHANCE.\"",
+                    "answer": "Who is Tidus?"
+                },
+                {
+                    "value":4,
+                   "question":"\"FARMBOY, POLISH MY HORSE'S SADDLE. I WANT TO SEE MY FACE SHINING IN IT BY MORNING\"",
+                    "answer": "Who is Princess Buttercup?"
+                },
+                {
+                    "value": 5,
+                    "question": "\"THIS IS IT.THIS IS WHERE FORRESTAL CASHED IN HIS CHIPS\"",
+                    "answer": "Who is Indiana Jones?"
+                }
+            ]
+        },
+        {
+            "name":"GOING \"DARK\"",
+            "questions":[
+                {
+                    "value":1,
+                   "question":"THIS UNFORGIVING ACTION/RPG FROM FROM SOFTWARE TAKES PLACE IN THE KINGDOM OF LORDRAN",
+                    "answer": "What is Dark Souls?"
+                },
+                {
+                    "value":2,
+                   "question":"TIM BURTON AND JOHNNY DEPP RESURRECTED THIS LATE-60S VAMPIRE SOAP OPERA AS A COMEDY FILM IN 2012",
+                    "answer": "What is Dark Shadows?"
+                },
+                {
+                    "value":3,
+                   "question":"THIS CLASSIC FRANK MILLER GRAPHIC NOVEL FEATURES A BITTER, AGING BATMAN AND A FEMALE ROBIN",
+                    "answer": "What is The Dark Knight Returns?"
+                },
+                {
+                    "value":4,
+                   "question":"GELFLINGS KIRA AND JEN ESCAPE THE SKEKSIS IN THIS 1982 JIM HENSON CULT FANTASY FAVORITE",
+                    "answer": "What is The Dark Crystal?"
+                },
+                {
+                    "value": 5,
+                    "question": "THE SPIDER-MAN STAGE MUSICAL,NOW PLAYING ON BROADWAY, FEATURES THIS UNUSUAL SUBTITLE",
+                    "answer": "What is Turn Off the Dark?"
+                }
+            ]
+        },
+        {
+            "name":"FICTIONAL COMPANIES",
+            "questions":[
+                {
+                    "value":1,
+                   "question":"YOU CAN BLAME THIS FICTIONAL COMPANY FOR RESIDENT EVIL'ST-VIRUS",
+                    "answer": "What is Umbrella?"
+                },
+                {
+                    "value":2,
+                   "question":"\"MORE HUMAN THAN HUMAN\" IS THE MOTTO OF THIS REPLICANT MANUFACTURER FROM BLADE RUNNER",
+                    "answer": "What is Tyrell Corporation?"
+                },
+                {
+                    "value":3,
+                   "question":"MILES DYSON CREATED NEURAL-NET PROCESSORS FOR THIS COMPANY, WHICH ULTIMATELY BUILDS SKYNET",
+                    "answer": "What is Cyberdyne Systems?"
+                },
+                {
+                    "value":4,
+                   "question":"THEY OWN ROBOCOP, ED-209, AND THE ENTIRE DETROIT POLICE FORCE",
+                    "answer": "What is Omni Consumer Products/OCP?"
+                },
+                {
+                    "value": 5,
+                    "question": "IN TRON, KEVIN FLYNN HACKS HIS WAY INTO THE NETWORK OF THIS FICTIONALGAME PUBLISHER",
+                    "answer": "What is Encom?"
+                }
+            ]
+        },
+        {
+            "name":"PAINFULLY OBVIOUS",
+            "questions":[
+                {
+                    "value":1,
+                   "question":"SHE'S THE PRINCESS IN THE CLASSIC RPG THE LEGEND OF ZELDA",
+                    "answer": "Who is Zelda?"
+                },
+                {
+                    "value":2,
+                   "question":"BUNGIE'S WORKING TITLE FOR MARATHON WAS MARATHON, BUT ONI'S WORKING TITLE WAS THIS",
+                    "answer": "What is Oni?"
+                },
+                {
+                    "value":3,
+                   "question":"THIS TWO-BUTTON FIGHTING GAME STARS TWOGUYS NAMED KICK AND DIVE",
+                    "answer": "What is Divekick?"
+                },
+                {
+                    "value":4,
+                   "question":"BRODERBUND'S CASTLE WOLFENSTEIN WAS AN INSPIRATION FOR THIS 1992 FIRST-PERSON SHOOTER FROM ID SOFTWARE",
+                    "answer": "What is Wolfenstein 3D?"
+                },
+                {
+                    "value": 5,
+                    "question": "THIS VIDEO GAME CHARACTERIS BLUE, COLLECTS RINGS, AND GOES FAST",
+                    "answer": "What is Sonic/Dankey Kang?"
+                }
+            ]
+        }
+    ],
+    "final-jeopardy":{
+        "category": "MARVEL MOVIES",
+        "media": "https://www.youtube.com/watch?v=eVrGfM4qFkQ",
+        "question": "IT WAS THE FIRST FEATURE-LENGTH MARVEL FILM RELEASED IN THEATERS",
+        "answer": "What is Howard the Duck?",
+        "answerMedia": "https://www.youtube.com/watch?v=oBhuP8KhqUA"
+    }
+}

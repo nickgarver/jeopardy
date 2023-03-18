@@ -9,6 +9,17 @@ $(function(){
                 var fileText = reader.result;
                 var data = $.parseJSON(fileText);
                 jsonData = data;
+                gameLength = Object.keys(jsonData).length;
+                switch (gameLength) {
+                    case 2:
+                        rounds = ['jeopardy', 'final-jeopardy'];
+                        break;
+                    case 3:
+                        rounds = ['jeopardy', 'double-jeopardy', 'final-jeopardy'];
+                        break;
+                    default:
+                        break;
+                }
                 currentBoard = jsonData[rounds[currentRound]];
                 loadBoard();
                 $('#game-load-modal').modal('hide');
@@ -111,7 +122,9 @@ $(function(){
     });
 });
 
-var rounds = ['jeopardy', 'double-jeopardy', 'final-jeopardy'];
+// var rounds = ['jeopardy', 'double-jeopardy', 'final-jeopardy'];
+var rounds = [];
+var gameLength = 0;
 var currentBoard;
 var currentRound = 0;
 var gameDataFile;
@@ -119,6 +132,8 @@ var gameDataFile;
 function loadBoard() {
     //function that turns the board.json (loaded in the the currentBoard variable) into a jeopardy board
     var board = $('#main-board');
+    // console.log(rounds[currentRound]);
+    // console.log(Object.keys(currentBoard).length);
     if (rounds[currentRound] === "final-jeopardy") {
         finalquestionMedia = currentBoard['media'];
         $('#end-round').hide();
