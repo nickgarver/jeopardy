@@ -106,15 +106,19 @@ body div {
 	background-image: none;
 	border: none;
 	display: table-cell;
-	vertical-align: middle;
+	vertical-align: top;
 	position: relative;
 	height: auto !important;
+	/* background-color: red; */
+
 }
 
 .category-text {
 	/* color: var(--white-text); */
 	font-size: 24px;
 	font-family: var(--title-font);
+	text-transform: uppercase;
+	padding: 5px !important;
 }
 /* main panels */
 .well {
@@ -137,6 +141,7 @@ body div {
 	color: var(--white-text);
 	font-size: 50px;
 	font-family: var(--card-font);
+	text-transform: uppercase;
 }
 
 .unanswered {
@@ -285,6 +290,7 @@ body div {
 
 .question-text, #answer-text, #final-jeopardy-question {
 	font-family: var(--question-font);
+	text-transform: uppercase;
 	text-shadow: 2px 2px 2px var(--black-dark);
 	font-size: 45px;
 	width: 25ch;
@@ -295,6 +301,7 @@ body div {
 
 .caption {
 	font-family: var(--question-font) !important;
+	text-transform: uppercase;
 	font-size: 25px !important;
 	width: 35ch !important;
 	padding: 5% !important;
@@ -302,9 +309,9 @@ body div {
 
 #final-image, #question-media, #answer-media {
     position: relative;
-    height: 0;
+    /* height: 0; */
     width: 100%;
-    padding-bottom:56.25%;
+    /* padding-bottom:56.25%; */
 }
 
 video, iframe {
@@ -323,6 +330,11 @@ video, iframe {
 
 #final-jeopardy-logo-img{
 	height: 300px;
+}
+
+.imgHivemind {
+	height: 300px;
+	max-height: 300px;
 }
 
 /* BUTTONS */

@@ -236,9 +236,10 @@ function loadMedia(media, elementID){
         srcPrefix = './'
         $(elementID).empty().append("<video src=" + srcPrefix + media + ` 
         "type="video/mp4" controls> </video>"`).show();
-    } else if(media.endsWith(".png")) {
+    } else if((/\.(gif|jpe?g|tiff?|png|webp|bmp)$/i).test(media)) {
+        console.log(media);
         srcPrefix = './'
-        $(elementID).empty().append("<img src=" + srcPrefix + media + ">").show();
+        $(elementID).empty().append("<img style=\"width: 300px;\" src=" + srcPrefix + media + ">").show();
     } else {
         srcPrefix = './'
     }

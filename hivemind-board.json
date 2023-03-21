@@ -1,0 +1,197 @@
+{
+    "jeopardy":[
+        {
+            "name":"MUSIC TRIVIA",
+            "questions":[
+                {
+                    "value":1,
+                    "question":"This 1997 album by Radiohead was recently surpassed as the highest rated album on rateyourmusic.com by Kendrick Lamar's 'To Pimp a Butterfly",
+                    "answer": "Who is Ok Computer?"
+                },
+                {
+                    "value":2,
+                    "question":"Formed from the ashes of Joy Division, this substance band was founded in 1980",
+                    "answer": "Who is New Order?"
+                },
+                {
+                    "value":3,
+                    "question":"This 2019 album controversially won the Grammy for 'Best Rap Album' over other nominees including ASTROWORLD by Travis Scott and Swimming by Mac Miller ",
+                    "answer": "What is Invasion of privacy by carti b?"
+                },
+                {
+                    "value":4,
+                    "question":"This rapper sampled the Japanese vocaloid artist, Hatsune Miku, on the intro of their 2022 album",
+                    "answer": "Who is Future?"
+                    
+                    
+                },
+                {
+                    "value": 5,
+                    "question": "This artist has occupied the number one slot on the Billboard Hot 100 for a total of 91 weeks, the most ever",
+                    "answer": "Who is Mariah Carey"
+                }
+            ]
+        },
+        {
+            "name":"Big If's",
+            "questions":[
+                {
+                    "value":1,
+                    "question":"2pac raps that a certain state 'knows how to party' on this 1995 track with Snoop Dogg ",
+                    "answer": "What is Califoria Love?"
+                },
+                {
+                    "value":2,
+                    "question":"This streaming service was founded by Daniel Elk in 2006",
+                    "answer": "What is Spotify?"
+                },
+                {
+                    "value":3,
+                    "question":"This Steven Spielberg directed drama was released in 2002 and starred both Tom Hanks and Leonardo DiCaprio",
+                    "answer": "What is Catch Me If You Can?"
+                },
+                {
+                    "value":4,
+                   "question":"This 2014 Rich Gang song was heavily talked about when it released due to it's hard to understand lyrics",
+                    "answer": "What is Lifestyle?",
+                    "daily-double": true
+                },
+                {
+                    "value": 5,
+                    "question": "This rapper featured on the song 'Payphone' by Maroon 5",
+                    "answer": "Who is Wiz Khalifa?"
+                }
+            ]
+        },
+        {
+            "name":"Type Beat",
+            "questions":[
+                {
+                    "value":1,
+                   "question":"DJ grant play Beat 1",
+                    "answer": "Who is Playboi Carti?"
+                },
+                {
+                    "value":2,
+                   "question":"DJ grant play Beat 1",
+                    "answer": "Who is Bladee?"
+                },
+                {
+                    "value":3,
+                   "question":"DJ grant play Beat 1",
+                    "answer": "Who is Griselda?"
+                },
+                {
+                    "value":4,
+                   "question":"DJ grant play Beat 1",
+                    "answer": "Who is YNJ?"
+                },
+                {
+                    "value": 5,
+                    "question": "DJ grant play Beat 1",
+                    "answer": "Who is Pheobe Bridgers?"
+                }
+            ]
+        },
+        {
+            "name":"Iconic Lyric",
+            "questions":[
+                {
+                    "value":1,
+                   "question":"\"I had someone tell me I fell off ooh I needed that\"",
+                    "answer": "Who is Drake?"
+                },
+                {
+                    "value":2,
+                   "question":"\"Remember these bitches ain't wanna fuck, now she give me head outside the Toy's 'R' Us\"",
+                    "answer": "Who is Nav?"
+                },
+                {
+                    "value":3,
+                   "question":"\"I'm only 19 but my mind is older and when thing gets for real, my warm heart turns cold\"",
+                    "answer": "Who is Mob Deep?"
+                },
+                {
+                    "value":4,
+                   "question":"\"Had my heart broken by this women named Tammy but hoes gon' be hoes so I couldn't blame Tammy\"",
+                    "answer": "Who is Lil Wayne?"
+                },
+                {
+                    "value": 5,
+                    "question": "\"Him Duncan, face card hot, San Antonio, Jerome Bettis, what you go and get that Rollie for?\"",
+                    "answer": "Who is Babytron?"
+                }
+            ]
+        },
+        {
+            "name":"Color Pallet",
+            "questions":[
+                {
+                    "value":1,
+                    "media":"hivemind/pallet-1.jpg",
+                    "answer": "The Life of Pi'erre 4 - Pi'erre Bourne",
+                    "answerMedia": "hivemind/pallet-2.jpg"
+                },
+                {
+                    "value":2,
+                    "media":"hivemind/pallet-3.jpg",
+                    "answer": "Good Kid, M.a.d. City - Kendrick Lamar",
+                    "answerMedia": "hivemind/pallet-4.jpg"
+                },
+                {
+                    "value":3,
+                    "media":"hivemind/pallet-5.jpg",
+                    "answer": "Let's Start Here - Lil Yachty",
+                    "answerMedia": "hivemind/pallet-6.jpg"
+                },
+                {
+                    "value":4,
+                    "media":"hivemind/pallet-7.jpg",
+                    "answer": "Swimming - Mac Miller",
+                    "answerMedia": "hivemind/pallet-8.jpg"
+                },
+                {
+                    "value": 5,
+                    "media":"hivemind/pallet-9.jpg",
+                    "answer": "Red Moon in Venus - Kali Uchis",
+                    "answerMedia": "hivemind/pallet-10.jpg"
+                }
+            ]
+        },
+        {
+            "name":"Song From the Audio",
+            "questions":[
+                {
+                    "value":1,
+                   "question":"1 Second",
+                    "answer": "Who is MIA - Paper Planes?"
+                },
+                {
+                    "value":2,
+                   "question":"1/2 Second",
+                    "answer": "Who is Village People - YMCA?"
+                },
+                {
+                    "value":3,
+                   "question":"1/4th Second",
+                    "answer": "Who is Lil Yatchy - One Night?"
+                },
+                {
+                    "value":4,
+                   "question":"1/8th Second",
+                    "answer": "Who is PinkPantheress, Ice Spice - Boys a liar Pt. 2?"
+                },
+                {
+                    "value": 5,
+                    "question": "1/16th Second",
+                    "answer": "Who is MGMT - Kids?"
+                }
+            ]
+        }
+    ],
+    "final-jeopardy":{
+        "category": "Music News Article",
+        "question": "Complex ranked this artist the best rapper alive in 2006?",
+        "answer": "Who is Lil Wayne?"
+    }
+}
