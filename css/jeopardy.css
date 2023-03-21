@@ -264,7 +264,8 @@ body div {
 }
 
 #question-modal-body {
-	height: 500px;
+	min-height: 400px;
+	height: auto;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -315,7 +316,6 @@ body div {
 }
 
 video, iframe {
-	/* padding: 10px; */
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -325,17 +325,17 @@ video, iframe {
 }
 
 #question-media img, #final-image img {
-	height: 300px;
+	width: 400px;
 }
 
 #final-jeopardy-logo-img{
 	height: 300px;
 }
 
-.imgHivemind {
-	height: 300px;
-	max-height: 300px;
-}
+/* .imgHivemind {
+	height: 500px;
+	max-height: 500px;
+} */
 
 /* BUTTONS */
 
@@ -443,22 +443,33 @@ input::file-selector-button:active {
 	-webkit-transition: all .5s linear;
 	-o-transition: all .5s linear;
 	transition: all .5s linear;
-  }
+}
   
-  .fade-scale.in {
+.fade-scale.in {
 	opacity: 1;
 	transform: scale(1);
-  }
+}
 
-  .blink {
-	animation: blinker 1s step-start infinite;
-  }
+.fade-opacity {
+	opacity: 1;
+	-webkit-transition: all 1s linear;
+	-o-transition: all 1s linear;
+	transition: all 1s linear;
+}
   
-  @keyframes blinker {
-	50% {
-	  opacity: 0;
-	}
-  }
+.fade-opacity.in {
+	opacity: 1;
+}
+
+.blink {
+	animation: blinker 1s step-start infinite;
+}
+  
+@keyframes blinker {
+50% {
+	opacity: 0;
+}
+}
 
 
 .final-panel {

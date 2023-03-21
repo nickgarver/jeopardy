@@ -87,12 +87,17 @@ $(function(){
         else {
             $('#question-media').empty().hide();
         }
+        
         $('#answer-text').text(answer).hide();
         $('#answer-media').hide();
-        $('#question-modal').modal('show');
         $('#answer-close-button').data('question', question).data('category', category);
         $('#answer-show-button').data('media', answerMedia);
         $('#answer-show-button').show();
+
+        setTimeout(function() {
+            $('#question-modal').modal('show');
+        }, 100);
+
         handleAnswer();
     });
     $(document).on('click', '#final-jeopardy-question-button', function(){
@@ -239,7 +244,7 @@ function loadMedia(media, elementID){
     } else if((/\.(gif|jpe?g|tiff?|png|webp|bmp)$/i).test(media)) {
         console.log(media);
         srcPrefix = './'
-        $(elementID).empty().append("<img style=\"width: 300px;\" src=" + srcPrefix + media + ">").show();
+        $(elementID).empty().append("<img style=\"width: 400px;\" src=" + srcPrefix + media + ">").show();
     } else {
         srcPrefix = './'
     }
